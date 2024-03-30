@@ -1,5 +1,4 @@
 import axios from "axios";
-import { createStandaloneToast } from "@chakra-ui/react";
 import { backend } from "@/common/constants/constants";
 
 const { toast } = createStandaloneToast();

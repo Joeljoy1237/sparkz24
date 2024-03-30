@@ -34,7 +34,16 @@ export default function Profile() {
                 <Register className={styles.icon} />
               </div>
               <div className={styles.boxRow}>
-                <button className={styles.logout}>
+                <button className={styles.logout} onClick={() => {
+                  localStorage.clear();
+                  toast.success('Logout successfull', {
+                    theme: "colored",
+                    position: "bottom-center"
+                  })
+                  setTimeout(() => {
+                    window.location.replace('/')
+                }, 1000);
+                }}>
                   Logout
                 </button>
               </div>
