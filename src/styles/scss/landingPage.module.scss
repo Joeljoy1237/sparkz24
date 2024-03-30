@@ -6,7 +6,8 @@
     width: 100vw;
     padding: 0 5vw;
     position: relative;
-    background: linear-gradient(to bottom, #131517c4, #13151798), url('/images/bg.svg') center/cover fixed no-repeat;
+    background-color: $bg-color;
+    background: linear-gradient(to bottom, #131517c4, #13151798), url('/images/bg.jpg') center/cover fixed no-repeat;
 }
 
 .wrapper {
