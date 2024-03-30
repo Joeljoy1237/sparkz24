@@ -6,6 +6,8 @@ import { useRouter } from 'next/navigation'
 import { toast } from 'react-toastify';
 import Image from 'next/image'
 import Register from '@/common/icons/Register';
+import Ticket from '@/common/components/Ticket';
+import TicketIcon from '@/common/icons/Ticket';
 
 export default function Profile() {
   const [user, setUser] = useState(null);
@@ -33,6 +35,12 @@ export default function Profile() {
                 <span className={styles.welcome}>Registered Events</span>
                 <Register className={styles.icon} />
               </div>
+              {/* <div className={styles.boxRow} onClick={()=>{
+                router.push('/ticket')
+              }}>
+                <span className={styles.welcome}>View Your Ticket</span>
+                <TicketIcon className={styles.icon} />
+              </div> */}
               <div className={styles.boxRow}>
                 <button className={styles.logout} onClick={() => {
                   localStorage.clear();
@@ -131,6 +139,14 @@ export default function Profile() {
 
           </div>
         </div>
+        {/* <div className={styles.ticketRow}>
+          <div className={styles.ticketRight}>
+            <Ticket/>
+          </div>
+          <div className={styles.ticketLeft}>
+            hi
+          </div>
+        </div> */}
       </div>
     </div>
   )

@@ -35,6 +35,7 @@
 .row {
     display: flex;
     width: 100%;
+    gap: 2rem;
 }
 
 .boxRow {
@@ -43,6 +44,7 @@
     align-items: center;
     justify-content: space-between;
     padding: 1vh 0.5vw;
+    cursor: pointer;
 }
 
 .profileBox {
@@ -138,4 +140,19 @@
 
 .user{
     font-size: 1rem;
+}
+
+.ticketRow{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ticketLeft{
+    flex: 3;
+}
+
+
+.ticketRight{
+    flex: 9;
 }
