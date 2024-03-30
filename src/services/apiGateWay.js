@@ -1,7 +1,6 @@
 import axios from "axios";
 import { backend } from "@/common/constants/constants";
-
-const { toast } = createStandaloneToast();
+import { toast } from 'react-toastify';
 
 export const publicGateway = axios.create({
     baseURL: backend,
@@ -22,12 +21,9 @@ privateGateway.interceptors.request.use(
     function (config) {
         // Check if the browser is online
         if (!navigator.onLine) {
-            toast({
-                title: "Network Error",
-                description: "Please check your internet connection.",
-                status: "error",
-                duration: 5000,
-                isClosable: true
+            toast.error("Network Error. Please check your internet connection.", {
+                position: "bottom-center",
+                theme: "colored"
             });
 
             // Returning a rejected promise will prevent the request from being sent
@@ -55,12 +51,9 @@ privateGateway.interceptors.response.use(
     function (error) {
         if (!error.response && !error.status) {
             // No response and no error status, indicating a network issue
-            toast({
-                title: "Network Error",
-                description: "Please check your internet connection.",
-                status: "error",
-                duration: 5000,
-                isClosable: true
+            toast.error("Network Error. Please check your internet connection.", {
+                position: "bottom-center",
+                theme: "colored"
             });
 
             return Promise.resolve({
@@ -68,13 +61,9 @@ privateGateway.interceptors.response.use(
             });
         } else if (error.response?.data?.resCode === 2215) {
             // Handle specific error code
-            toast.closeAll();
-            toast({
-                title: error.response?.data?.message,
-                description: error?.response?.data?.description,
-                status: "error",
-                duration: 5000,
-                isClosable: true
+            toast.error(error.response?.data?.message + error?.response?.data?.description, {
+                position: "bottom-center",
+                theme: "colored"
             });
 
             // Wait for 3 seconds
