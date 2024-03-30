@@ -6,7 +6,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 export default function LandingPage() {
-  const targetDate = new Date("April 19, 2024").getTime();
+  const targetDate = new Date("April 29, 2024").getTime();
   const [days, setDays] = useState(0);
   const [hours, setHours] = useState(0);
   const [minutes, setMinutes] = useState(0);
@@ -72,10 +72,10 @@ export default function LandingPage() {
         </div> */}
         <div className={styles.banner}>
           <Image alt='logo' src="/images/sparkzLogo.svg" height={100} width={100} className={styles.bannerImg} />
-          <span className={styles.title}>SPARKZ'24</span>
+          <span className={styles.title}>SPARKZ</span>
           <span className={styles.tagline}>Innovation unleashed</span>
           <div className={styles.taglineBox}>
-            <span className={styles.clg}>April 5th 2024  |  Carmel College Of Engineering & Technology</span>
+            <span className={styles.clg}>April 29 & 30 2024  |  Carmel College Of Engineering & Technology</span>
             {/* <span className={styles.clg}>Planning to bring the best event across the globe.
               Our own Sparkz CCET 2024.</span> */}
             <Link href="/events"><button className={styles.event}>Event Gallery</button></Link>

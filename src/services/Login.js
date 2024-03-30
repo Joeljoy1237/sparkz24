@@ -44,7 +44,7 @@ export const userLogin = async (
             body: JSON.stringify({
                 email, password
             })
-         }
+        }
         );
 
         const data = await res.json();
@@ -65,11 +65,12 @@ export const userLogin = async (
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization':'Bearer '+data?.accessToken
+                'Authorization': 'Bearer ' + data?.accessToken
             },
         }
         );
-        console.log(user)
+        const userData = await user.json();
+        localStorage.setItem('user', JSON.stringify(userData?.data))
         // Optionally, you can return the data here if you want to use it outside this function
         return true;
     } catch (error) {

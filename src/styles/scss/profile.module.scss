@@ -1,38 +1,141 @@
 @import 'variables';
 
-.container{
+.container {
     display: flex;
     min-height: 100vh;
     width: 100vw;
     padding: 15vh 5vw;
-    background: linear-gradient(to bottom, #131517f6, transparent), linear-gradient(to top, #13151700, transparent),;
+    background: linear-gradient(to bottom, #131517f6, transparent), linear-gradient(to top, #13151700, transparent), ;
 }
 
-.wrapper{
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 2rem;
+}
+
+.left {
+    display: flex;
+    flex: 4;
+    width: 100%;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.right {
+    flex: 8;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.row {
     display: flex;
     width: 100%;
 }
 
-.topBar{
+.boxRow {
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    padding: 1vh 0.5vw;
+}
+
+.profileBox {
+    display: flex;
     width: 100%;
-    padding: 0 1rem;
-    // background-color:#131517ad;
-    box-shadow: #3b3b3b77 1px 3px 5px;
-    height: 10vh;
+    gap: 1rem;
+    flex-direction: column;
+    padding: 1rem;
+    border: 1.5px solid $secondary;
     border-radius: 10px;
 }
 
-.left{
-    display: flex;
-    flex: 6;
+.hr {
+    height: 1px;
+    background-color: $secondary;
 }
 
-.right{
-    flex: 6;
+.logout {
+    background-color: $primary;
+    width: 100%;
+    padding: 1rem;
+    border-radius: 10px;
+}
+
+.profile {
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+.welcome {
+    font-size: 1.1rem;
+}
+
+.icon {
+    font-size: 1.3rem;
+}
+
+.img {
+    width: 15rem;
+}
+
+
+.rightBox {
     display: flex;
+    width: 100%;
+}
+
+
+.rightRow {
+    display: flex;
+    gap: 1rem;
     align-items: center;
-    justify-content: flex-end;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.rightLeft {
+    flex: 4;
+    display: flex;
+    width: 100%;
+}
+
+.rightRight {
+    flex: 8;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.rightBoxRow{
+    display: flex;
+    // flex-direction: column;
+    width: 100%;
+    gap: 1rem;
+}
+
+.placeholder {
+   width: 100%;
+}
+
+.place{
+    font-size: 0.8rem;
+    color: gray;
+}
+
+.value{
+    padding: 1rem 0.5rem;
+    border: 1px solid $secondary;
+    border-radius: 10px;
+}
+
+.user{
+    font-size: 1rem;
 }
