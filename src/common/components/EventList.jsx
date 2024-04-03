@@ -5,7 +5,7 @@ export default function EventList({ eventList }) {
   return (
     <div className={styles.container}>
       {eventList?.map((event) => (
-        <Image src={event?.imgUrl} height={1000} width={1000} className={styles.poster}/>
+        <Image key={event?._id} src={event?.imgUrl} height={1000} width={1000} className={styles.poster}/>
       ))}
     </div>
   )
