@@ -1,0 +1,14 @@
+@import 'variables';
+
+.container{
+    display: flex;
+    align-items: start;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.poster{
+    height: 100%;
+    width: 298px;
+}
