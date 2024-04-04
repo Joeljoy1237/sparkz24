@@ -7,7 +7,7 @@ export default function EventList({ eventList }) {
     <div className={styles.container}>
       {eventList?.map((event) => (
         <Suspense fallback={"loading"}>
-          <Image key={event?._id} src={event?.imgUrl} height={1000} width={1000} className={styles.poster} />
+          <Image key={event?._id} src={event?.imgUrl ? event?.imgUrl : event?.posterImg} height={1000} width={1000} className={styles.poster} />
         </Suspense>
       ))}
     </div>

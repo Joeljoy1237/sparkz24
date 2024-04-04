@@ -16,3 +16,15 @@ export const getDepartmentEvents = async (
     }
 
 }
+
+export const getAllEvents = async (
+    setEvents
+) => {
+    try {
+        const response = await publicGateway.get(api.getAllEvents)
+        setEvents(response?.data?.data)
+        console.log(response)
+    } catch (error) {
+        console.log(error)
+    }
+}

@@ -74,7 +74,7 @@ export default function LandingPage() {
             <span className={styles.clg}>April 29 & 30 2024  |  Carmel College Of Engineering & Technology</span>
             {/* <span className={styles.clg}>Planning to bring the best event across the globe.
               Our own Sparkz CCET 2024.</span> */}
-            <Link href="/events"><button className={styles.event}>Event Gallery</button></Link>
+            <Link href="/all-events"><button className={styles.event}>Event Gallery</button></Link>
           </div>
           <div className={styles.timerBox}>
             <div className={styles.box}>
