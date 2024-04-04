@@ -2,16 +2,33 @@
 
 .container {
     display: flex;
-    min-height: 100vh;
+    min-height: 110vh;
     width: 100vw;
-    padding: 0 5vw;
+    padding: 0;
     position: relative;
     background-color: $bg-color;
-    background: linear-gradient(to bottom, #131517c4, #13151798), url('/images/bg.jpg') center/cover fixed no-repeat;
+    // background: linear-gradient(to bottom, #131517c4, #13151798), url('/images/bg.jpg') center/cover fixed no-repeat;
+}
+
+.bg {
+    display: flex;
+    width: 100%;
+    object-fit: cover;
+    position: absolute;
+    height: 115vh;
+}
+
+.bgOverlay{
+    height: 115vh;
+    width: 100vw;
+    position: absolute;
+    background: linear-gradient(to bottom, #131517c4, #13151798);
+
 }
 
 .wrapper {
     display: flex;
+    padding: 0 5vw;
     flex-direction: row;
     align-items: center;
     justify-content: center;
@@ -82,10 +99,10 @@
     outline: none;
     font-weight: 600;
     color: $white;
-    background:linear-gradient(to right,#3b3b3b7c,#01f77e,#01f77e,#3b3b3b7c);
+    background: linear-gradient(to right, #3b3b3b7c, #01f77e, #01f77e, #3b3b3b7c);
 }
 
-.timerBox{
+.timerBox {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -95,7 +112,7 @@
     bottom: 1rem;
 }
 
-.box{
+.box {
     display: flex;
     width: 5vw;
     height: 5vw;
@@ -108,7 +125,7 @@
     border-radius: 10px;
 }
 
-.date{
+.date {
     font-size: 1.7vw;
-// margin-top: 0.1rem;
+    // margin-top: 0.1rem;
 }

@@ -63,13 +63,9 @@ export default function LandingPage() {
   }, []);
   return (
     <div className={styles.container}>
+      <Image className={styles.bg} src="/images/bg.jpg" height={1000} width={1000}/>
+      <div className={styles.bgOverlay}></div>
       <div className={styles.wrapper}>
-        {/* <div className={styles.left}>
-          <span className={styles.date}>date</span>
-        </div>
-        <div className={styles.right}>
-          <span className={styles.time}>timer</span>
-        </div> */}
         <div className={styles.banner}>
           <Image alt='logo' src="/images/sparkzLogo.svg" height={100} width={100} className={styles.bannerImg} />
           <span className={styles.title}>SPARKZ</span>
