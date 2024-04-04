@@ -1,0 +1,12 @@
+@import 'variables';
+
+.container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    padding: 10vh 5vw;
+    overflow: hidden;
+    background: linear-gradient(to bottom, #131517f6, transparent), linear-gradient(to top, #13151700, transparent), ;
+}
