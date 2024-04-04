@@ -2,13 +2,14 @@
 
 import React, { useEffect, useState } from 'react'
 import styles from '@styles/scss/eventListPage.module.scss'
-// import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 import { useParams, usePathname } from 'next/navigation';
 import { getDepartmentEvents } from '@/services/events/Event';
 import EventList from '@/common/components/EventList';
 
 export default function EventListPage() {
-  const params = useParams()
+  const params = useParams();
+  const router = useRouter();
   const [eventList, setEventList] = useState([]);
   const [title, setTitle] = useState("");
 
@@ -22,6 +23,8 @@ export default function EventListPage() {
       setTitle("Mechanical Engineering");
     } else if (params?.slug.toLocaleLowerCase() === "civil") {
       setTitle("Civil Engineering")
+    }else{
+      router.push('/not-found')
     }
   }, [])
 
