@@ -3,10 +3,16 @@
 .container {
     min-height: 100vh;
     display: flex;
+    flex-direction: column;
+    overflow: hidden;
     align-items: center;
     justify-content: center;
     background: transparent;
     padding: 10vh 5vw;
-    overflow: hidden;
+    gap: 10vh;
     background: linear-gradient(to bottom, #131517f6, transparent), linear-gradient(to top, #13151700, transparent), ;
+}
+
+.row{
+    width: 100%;
 }

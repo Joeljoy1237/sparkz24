@@ -13,7 +13,12 @@ export default function SliderEvents() {
 
     return (
         <div className={styles.container}>
-            <Slider events={allEvents} />
+            <div className={styles.row}>
+                <Slider events={allEvents} />
+            </div>
+            <div className={styles.row}>
+                <Slider events={allEvents} />
+            </div>
         </div>
     )
 }

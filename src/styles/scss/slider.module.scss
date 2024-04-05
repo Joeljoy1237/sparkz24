@@ -6,7 +6,8 @@
     align-items: center;
     // justify-content: center;
     position: relative;
-    overflow: hidden;
+    overflow-x: scroll;
+    overflow-y: hidden;
     background: linear-gradient(to bottom, #131517f6, transparent), linear-gradient(to top, #131517ab, transparent), ;
 }
 
@@ -41,11 +42,18 @@
     width: 100%;
     gap: 0.5rem;
     width: max-content;
+    position: relative;
     transform: translateX(0px);
     transition: all 1s ease;
 }
 
 .poster {
     // height: 16rem;
-    width: 11rem;
+    width: 10rem;
+    transition: transform 0.3s ease;
+
+    &:hover {
+        transform: scale(1.1);
+        z-index: 1;
+    }
 }
