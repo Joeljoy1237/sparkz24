@@ -15,11 +15,13 @@ import Link from 'next/link'
 import { navLinks } from '../../common/constants/constants'
 import { MdLogin } from "react-icons/md"
 import { MdAccountCircle } from "react-icons/md";
+import IconMenu from '@/common/icons/MoreIcon';
 
 export default function Navbar() {
 
   const [isNavbarFixed, setIsNavbarFixed] = useState(false);
   const [scrollPosition, setScrollPosition] = useState(0);
+  const [drawerOpen, setDrawerOpen] = useState(true);
   const [token, setToken] = useState(true);
 
   useEffect(() => {
@@ -50,33 +52,46 @@ export default function Navbar() {
   }, [scrollPosition, isNavbarFixed]);
 
   return (
-    <div className={isNavbarFixed ? styles.styledcontainer : styles.container}>
-      <div className={styles.wrapper}>
-        <div className={styles.left}>
-          <Image src="/images/sparkzLogo.svg" alt='logo' width="1" height={10} className={styles.logo} />
-          <span className={styles.logoTxt}>SPARKZ'<span className={styles.highlight}>24</span></span>
-        </div>
-        <div className={styles.center}>
-          {navLinks?.map((item, index) => (
-            <div className={styles.navItemBox} key={`navLink_index${item}_${index}`}>
-              <Link href={item?.link} className={styles.navItem}>{item?.title}</Link>
-            </div>
-          ))}
-        </div>
-        <div className={styles.right}>
-          {token ?
-            <Link href='/profile' onClick={() => {
-              // revalidatePath('/')
-            }}>
-              <MdAccountCircle className={styles.icon} />
-            </Link>
-            :
-            <Link href='/login'>
-              <MdLogin className={styles.icon} />
-            </Link>
-          }
+    <div className={styles.parent}>
+      <div className={drawerOpen ? styles.open : (isNavbarFixed ? styles.styledcontainer : styles.container)}>
+        <div className={styles.wrapper}>
+          <div className={styles.left}>
+            <Image src="/images/sparkzLogo.svg" alt='logo' width="1" height={10} className={styles.logo} />
+            <span className={styles.logoTxt}>SPARKZ'<span className={styles.highlight}>24</span></span>
+          </div>
+          <div className={styles.center}>
+            {navLinks?.map((item, index) => (
+              <div className={styles.navItemBox} key={`navLink_index${item}_${index}`}>
+                <Link href={item?.link} className={styles.navItem}>{item?.title}</Link>
+              </div>
+            ))}
+          </div>
+          <div className={styles.right}>
+            {token ?
+              <Link href='/profile' onClick={() => {
+                // revalidatePath('/')
+              }}>
+                <MdAccountCircle className={styles.icon} />
+              </Link>
+              :
+              <Link href='/login'>
+                <MdLogin className={styles.icon} />
+              </Link>
+            }
+          </div>
+          <div className={styles.resRight} onClick={() => {
+            setDrawerOpen(!drawerOpen)
+          }}>
+            <IconMenu className={styles.more} />
+          </div>
         </div>
       </div>
+      {
+        drawerOpen &&
+        <div className={styles.drawer}>
+          hi
+        </div>
+      }
     </div>
   )
 }
