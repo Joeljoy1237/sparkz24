@@ -11,6 +11,10 @@
     background: linear-gradient(to bottom, #131517f6, transparent), linear-gradient(to top, #131517ab, transparent), ;
 }
 
+.container::-webkit-scrollbar {
+    display: none;
+}
+
 .leftIcon {
     font-size: 5rem;
 }
@@ -40,7 +44,7 @@
 .sliderContainer {
     display: flex;
     width: 100%;
-    gap: 0.5rem;
+    gap: 1vw;
     width: max-content;
     position: relative;
     transform: translateX(0px);
@@ -48,12 +52,16 @@
 }
 
 .poster {
-    // height: 16rem;
-    width: 10rem;
-    transition: transform 0.3s ease;
+    max-width: 20vw;
+    height: 20vw;
+    object-fit: cover;
+    transition: all 0.3s ease-in-out;
+    border-radius: 10px;
+    cursor: pointer;
 
     &:hover {
-        transform: scale(1.1);
+        max-width: 22vw;
+        height: 22vw;
         z-index: 1;
     }
 }

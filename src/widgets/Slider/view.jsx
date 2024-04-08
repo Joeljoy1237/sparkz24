@@ -12,7 +12,7 @@ export default function Slider({
         <div className={styles.container}>
             <div className={styles.sliderContainer}>
                 {events?.map((event) => (
-                    <Image className={styles.poster} src={event?.imgUrl ? event?.imgUrl : event?.posterImg} height={200} width={200} />
+                    <Image className={styles.poster} src={event?.imgUrl ? event?.imgUrl : event?.posterImg} height={1000} width={1000} />
                 ))}
             </div>
         </div>

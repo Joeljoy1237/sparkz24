@@ -14,9 +14,15 @@ export default function SliderEvents() {
     return (
         <div className={styles.container}>
             <div className={styles.row}>
+                <div className={styles.titleBox}>
+                    <span className={styles.featured}>Featured Events</span>
+                </div>
                 <Slider events={allEvents} />
             </div>
             <div className={styles.row}>
+                <div className={styles.titleBox}>
+                    <span className={styles.featured}>All Events</span>
+                </div>
                 <Slider events={allEvents} />
             </div>
         </div>
