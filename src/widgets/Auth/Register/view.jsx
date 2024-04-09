@@ -56,13 +56,13 @@ export default function Register() {
                 <span className={styles.label}>First Name</span>
                 <input onChange={(e) => {
                   setFirstName(e.target.value);
-                }} type="text" className={styles.txtBox} placeholder='Jacs' />
+                }} type="text" className={styles.txtBox} placeholder='John' />
               </div>
               <div className={styles.InputBox}>
                 <span className={styles.label}>Last Name</span>
                 <input onChange={(e) => {
                   setLastName(e.target.value);
-                }} type="text" className={styles.txtBox} placeholder='Jacob' />
+                }} type="text" className={styles.txtBox} placeholder='Michael' />
               </div>
             </div>
 
@@ -71,7 +71,7 @@ export default function Register() {
                 <span className={styles.label}>Email</span>
                 <input onChange={(e) => {
                   setEmail(e.target.value);
-                }} type="email" className={styles.txtBox} placeholder='mark@gmail.com' />
+                }} type="email" className={styles.txtBox} placeholder='example@gmail.com' />
               </div>
               <div className={styles.InputBox}>
                 <span className={styles.label}>Mobile Number</span>
