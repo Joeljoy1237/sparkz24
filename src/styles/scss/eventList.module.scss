@@ -6,9 +6,15 @@
     justify-content: center;
     flex-wrap: wrap;
     gap: 2rem;
+    
 }
 
 .poster{
     height:300px;
     width: 300px;
+    transition: transform 0.2s ease-in-out;
+    &:hover {
+        /* Move the image 5 pixels upwards */
+        transform: translateY(-6px);
+    }
 }

@@ -12,6 +12,9 @@ export default function AllEvents() {
     }, [])
     return (
         <div className={styles.container}>
+            <div className={styles.titleBox}>
+                <span className={styles.title}>All Events</span>
+            </div>
             <EventList eventList={events} />
         </div>
     )

@@ -6,7 +6,7 @@
     background: transparent;
     padding: 13vh 5vw;
     overflow: hidden;
-    background: linear-gradient(to bottom, #131517f6, transparent), linear-gradient(to top, #13151700, transparent), ;
+    background: linear-gradient(to bottom, #131517f6, transparent), linear-gradient(to top, #131517ce, transparent), ;
 }
 
 .wrapper {
@@ -61,7 +61,13 @@
     background-color: $bg-color;
     border-radius: 10px;
     cursor: pointer;
+    transition: transform 0.2s ease-in-out;
     box-shadow: rgb(36, 36, 36) 0px 8px 24px;
+
+    &:hover {
+        /* Move the image 5 pixels upwards */
+        transform: translateY(-6px);
+    }
 }
 
 .logoname{
