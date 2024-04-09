@@ -19,22 +19,27 @@ export const navLinks = [
 
 export const depLogo = [
     {
+        title:"Computer Science & Engineering",
         img:"/events/cs.svg",
         url:"/events/cse"
     },
     {
+        title:"Electrical & Electronics Engineering",
         img:"/events/cs.svg",
         url:"/events/eee"
     },
     {
+        title:"Mechanical Engineering",
         img:"/events/cs.svg",
         url:"/events/mech"
     },
     {
+        title:"Civil Engineering",
         img:"/events/cs.svg",
         url:"/events/bsc"
     },
     {
+        title:"Basic Science & Humanities",
         img:"/events/cs.svg",
         url:"/events/ce"
     },
