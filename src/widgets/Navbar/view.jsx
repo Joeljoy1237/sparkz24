@@ -16,12 +16,13 @@ import { navLinks } from '../../common/constants/constants'
 import { MdLogin } from "react-icons/md"
 import { MdAccountCircle } from "react-icons/md";
 import IconMenu from '@/common/icons/MoreIcon';
+import IconCloseOutline from '@/common/icons/CloseIcon';
 
 export default function Navbar() {
 
   const [isNavbarFixed, setIsNavbarFixed] = useState(false);
   const [scrollPosition, setScrollPosition] = useState(0);
-  const [drawerOpen, setDrawerOpen] = useState(true);
+  const [drawerOpen, setDrawerOpen] = useState(false);
   const [token, setToken] = useState(true);
 
   useEffect(() => {
@@ -79,11 +80,19 @@ export default function Navbar() {
               </Link>
             }
           </div>
-          <div className={styles.resRight} onClick={() => {
-            setDrawerOpen(!drawerOpen)
-          }}>
-            <IconMenu className={styles.more} />
-          </div>
+          {drawerOpen ?
+            <div className={styles.resRight} onClick={() => {
+              setDrawerOpen(false)
+            }}>
+              <IconCloseOutline className={styles.more} />
+            </div>
+            :
+            <div className={styles.resRight} onClick={() => {
+              setDrawerOpen(true)
+            }}>
+              <IconMenu className={styles.more} />
+            </div>
+          }
         </div>
       </div>
       {

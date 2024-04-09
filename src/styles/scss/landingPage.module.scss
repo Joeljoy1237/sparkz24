@@ -10,6 +10,18 @@
     // background: linear-gradient(to bottom, #131517c4, #13151798), url('/images/bg.jpg') center/cover fixed no-repeat;
 }
 
+@media only screen and (max-width: 880px) {
+    .container {
+        display: flex;
+        min-height: 100vh;
+        width: 100vw;
+        padding: 0;
+        position: relative;
+        background-color: $bg-color;
+        // background: linear-gradient(to bottom, #131517c4, #13151798), url('/images/bg.jpg') center/cover fixed no-repeat;
+    }
+}
+
 .bg {
     display: flex;
     width: 100%;
@@ -62,6 +74,13 @@
     width: 10vw;
 }
 
+@media only screen and (max-width: 880px) {
+    .bannerImg {
+        width: 40vw;
+        margin-left: 10vw;
+    }
+}
+
 .titleBox {
     display: flex;
     align-items: center;
@@ -74,6 +93,13 @@
     font-weight: 700;
 }
 
+@media only screen and (max-width: 880px) {
+    .title {
+        font-size: 10vw;
+        font-weight: 700;
+    }
+}
+
 .tagline {
     font-size: 1.8vw;
     letter-spacing: 0.3rem;
@@ -81,12 +107,21 @@
     margin-top: -1rem;
 }
 
+@media only screen and (max-width: 880px) {
+    .tagline {
+        font-size: 3.8vw;
+        letter-spacing: 0.2rem;
+        font-weight: 500;
+        margin-top: -0.1rem;
+    }
+}
+
 .taglineBox {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    gap: 0.5rem;
+    gap: 0rem;
     margin-top: 1rem;
 }
 
@@ -102,6 +137,20 @@
     background: linear-gradient(to right, #3b3b3b7c, #01f77e, #01f77e, #3b3b3b7c);
 }
 
+@media only screen and (max-width: 880px) {
+    .event {
+        padding: 1rem;
+        width: 45vw;
+        border-radius: 10px;
+        border: none;
+        margin-top: 1rem;
+        outline: none;
+        font-weight: 600;
+        color: $white;
+        background: linear-gradient(to right, #3b3b3b7c, #01f77e, #01f77e, #3b3b3b7c);
+    }
+}
+
 .timerBox {
     display: flex;
     align-items: center;
@@ -110,6 +159,18 @@
     margin-top: 2rem;
     position: absolute;
     bottom: 1rem;
+}
+
+@media only screen and (max-width: 880px) {
+    .timerBox {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+        margin-top: 2rem;
+        position: absolute;
+        bottom: 5vh;
+    }
 }
 
 .box {
@@ -125,7 +186,49 @@
     border-radius: 10px;
 }
 
+@media only screen and (max-width: 880px) {
+    .box {
+        display: flex;
+        width:13vw;
+        height: 13vw;
+        align-items: center;
+        justify-content: center;
+        color: $primary;
+        font-weight: 600;
+        font-size: 2vw;
+        background-color: #131517ce;
+        border-radius: 10px;
+    }
+}
+
 .date {
     font-size: 1.7vw;
     // margin-top: 0.1rem;
+}
+
+@media only screen and (max-width: 880px) {
+    .date {
+        font-size: 3.7vw;
+        // margin-top: 0.1rem;
+    }
+}
+
+.clg{
+    display: flex;
+}
+
+@media only screen and (max-width: 880px) {
+    .clg{
+        display: none;
+    }
+}
+
+.clgRes{
+    display: none;
+}
+
+@media only screen and (max-width: 880px) {
+    .clgRes{
+        display: flex;
+    }
 }

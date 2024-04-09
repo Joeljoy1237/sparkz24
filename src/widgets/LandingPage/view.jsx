@@ -63,7 +63,7 @@ export default function LandingPage() {
   }, []);
   return (
     <div className={styles.container}>
-      <Image className={styles.bg} src="/images/bg.jpg" height={1000} width={1000}/>
+      <Image className={styles.bg} src="/images/bg.jpg" height={1000} width={1000} />
       <div className={styles.bgOverlay}></div>
       <div className={styles.wrapper}>
         <div className={styles.banner}>
@@ -72,28 +72,37 @@ export default function LandingPage() {
           <span className={styles.tagline}>Innovation unleashed</span>
           <div className={styles.taglineBox}>
             <span className={styles.clg}>April 29 & 30 2024  |  Carmel College Of Engineering & Technology</span>
+            <span className={styles.clgRes}>April 29 & 30 2024 </span>
+            <span className={styles.clgRes}>Carmel College Of Engineering & Technology</span>
             {/* <span className={styles.clg}>Planning to bring the best event across the globe.
               Our own Sparkz CCET 2024.</span> */}
             <Link href="/all-events"><button className={styles.event}>Event Gallery</button></Link>
           </div>
           <div className={styles.timerBox}>
             <div className={styles.box}>
-              {days}
+              <span className={styles.date}>    {days}</span>
+
+
               <span className={styles.date}>d</span>
             </div>
             :
             <div className={styles.box}>
-              {hours}
+
+              <span className={styles.date}>{hours}</span>
+
+
               <span className={styles.date}>h</span>
             </div>
             :
             <div className={styles.box}>
-              {minutes}
+              <span className={styles.date}>{minutes}</span>
+
               <span className={styles.date}>m</span>
             </div>
             :
             <div className={styles.box}>
-              {seconds}
+              <span className={styles.date}>{seconds}</span>
+
               <span className={styles.date}>s</span>
             </div>
           </div>
