@@ -13,16 +13,17 @@ import styles from '@styles/scss/navbar.module.scss'
 import Image from 'next/image'
 import Link from 'next/link'
 import { navLinks } from '../../common/constants/constants'
-import { MdLogin } from "react-icons/md"
+import { MdArrowRight, MdLogin } from "react-icons/md"
 import { MdAccountCircle } from "react-icons/md";
 import IconMenu from '@/common/icons/MoreIcon';
 import IconCloseOutline from '@/common/icons/CloseIcon';
+import RightIcon from '@/common/icons/RightIcon';
 
 export default function Navbar() {
 
   const [isNavbarFixed, setIsNavbarFixed] = useState(false);
   const [scrollPosition, setScrollPosition] = useState(0);
-  const [drawerOpen, setDrawerOpen] = useState(false);
+  const [drawerOpen, setDrawerOpen] = useState(true);
   const [token, setToken] = useState(true);
 
   useEffect(() => {
@@ -98,7 +99,27 @@ export default function Navbar() {
       {
         drawerOpen &&
         <div className={styles.drawer}>
-          hi
+          <div className={styles.drawerRow}>
+            {navLinks?.map((link) => (
+              <>
+                <Link onClick={()=>{
+                  setDrawerOpen(false)
+                }} href={link?.link} className={styles.resNavItem}>
+                  <span className={styles.resLink}>{link?.title}</span>
+                  <RightIcon />
+                </Link>
+                <div className={styles.hr}></div>
+              </>
+            ))}
+          </div>
+          <div className={styles.loginResBox}>
+            <button className={styles.loginRes}>Login</button>
+          </div>
+          <div className={styles.credits}>
+            <span className={styles.credit}>All rights reserved®</span>
+            {/* <span className={styles.credit}>©2023 - OBCYDIANSCCET</span> */}
+            {/* <span className={styles.credit}>Developed by </span> */}
+          </div>
         </div>
       }
     </div>

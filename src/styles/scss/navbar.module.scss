@@ -6,7 +6,7 @@
     background-color: #000;
 }
 
-.open{
+.open {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -208,6 +208,7 @@
 @media only screen and (max-width: 880px) {
     .drawer {
         display: flex;
+        flex-direction: column;
         position: fixed;
         height: 90vh;
         display: flex;
@@ -218,5 +219,66 @@
         z-index: 9999;
         transition: all 0.5s ease;
         margin-top: 10vh;
+        gap: 7vh;
     }
+}
+
+.drawerRow {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 1vh;
+    position: relative;
+}
+
+.resLink {
+    text-transform: capitalize;
+}
+
+.resNavItem {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 5vw;
+}
+
+.hr {
+    height: 1px;
+    background-color: $secondary;
+    width: 92vw;
+    align-self: center;
+}
+
+.loginResBox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.loginRes {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 92vw;
+    padding: 1rem;
+    font-size: 1rem;
+    font-weight: 500;
+    color: $secondary;
+    background: $primary;
+    border-radius: 10px;
+}
+
+.credits{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    bottom: 3vh;
+}
+
+.credit{
+    font-size: 0.9rem;
 }
