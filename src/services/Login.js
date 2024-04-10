@@ -33,8 +33,10 @@ import { revalidatePath } from 'next/cache'
 export const userLogin = async (
     email,
     password,
+    setLoading
     // toast
 ) => {
+    setLoading(true)
     try {
         const res = await fetch(backend + '/login', {
             method: 'POST',
@@ -69,11 +71,13 @@ export const userLogin = async (
             },
         }
         );
+        setLoading(false)
         const userData = await user.json();
         localStorage.setItem('user', JSON.stringify(userData?.data))
         // Optionally, you can return the data here if you want to use it outside this function
         return true;
     } catch (error) {
+        setLoading(false)
         toast.error(error?.message, {
             position: "bottom-center",
             theme: "colored"

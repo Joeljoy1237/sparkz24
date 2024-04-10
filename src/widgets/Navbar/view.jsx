@@ -18,6 +18,7 @@ import { MdAccountCircle } from "react-icons/md";
 import IconMenu from '@/common/icons/MoreIcon';
 import IconCloseOutline from '@/common/icons/CloseIcon';
 import RightIcon from '@/common/icons/RightIcon';
+import { useRouter } from 'next/navigation';
 
 export default function Navbar() {
 
@@ -25,6 +26,7 @@ export default function Navbar() {
   const [scrollPosition, setScrollPosition] = useState(0);
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [token, setToken] = useState(true);
+  const router = useRouter();
 
   useEffect(() => {
     // if (typeof window !== 'undefined') {
@@ -102,7 +104,7 @@ export default function Navbar() {
           <div className={styles.drawerRow}>
             {navLinks?.map((link) => (
               <>
-                <Link key={link?.title} onClick={()=>{
+                <Link key={link?.title} onClick={() => {
                   setDrawerOpen(false)
                 }} href={link?.link} className={styles.resNavItem}>
                   <span className={styles.resLink}>{link?.title}</span>
@@ -113,7 +115,10 @@ export default function Navbar() {
             ))}
           </div>
           <div className={styles.loginResBox}>
-            <button className={styles.loginRes}>Login</button>
+            <button className={styles.loginRes} onClick={() => {
+              router.push('/login');
+              setDrawerOpen(false);
+            }}>Login</button>
           </div>
           <div className={styles.credits}>
             <span className={styles.credit}>All rights reserved®</span>

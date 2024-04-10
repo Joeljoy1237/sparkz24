@@ -6,16 +6,18 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { userLogin } from '@/services/Login'
+import { toast } from 'react-toastify'
 
 export default function Login() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [token, setToken] = useState(null);
+    const [loading, setLoading] = useState(false);
 
     const router = useRouter();
     const handleSubmit = async () => {
         try {
-            const res = await userLogin(email, password);
+            const res = await userLogin(email, password, setLoading);
             if (res) {
                 setTimeout(() => {
                     window.location.replace('/')
@@ -55,17 +57,24 @@ export default function Login() {
                                 </div>
                                 <div className={styles.inputBox}>
                                     <span className={styles.label}>Password</span>
-                                    <input onChange={(e) => setPassword(e.target.value)} type="text" className={styles.inputField} placeholder='12345678' />
+                                    <input onChange={(e) => setPassword(e.target.value)} type="password" className={styles.inputField} placeholder='12345678' />
                                 </div>
                             </div>
                             <div className={styles.loginRow}>
                                 <button className={styles.submit} onClick={(e) => {
                                     e.preventDefault()
-                                    handleSubmit()
-                                }} >Login</button>
+                                    if (email === "" | password === "") {
+                                        toast.error("Please fill the required fields", {
+                                            position: "bottom-center",
+                                            theme: "colored"
+                                        });
+                                    } else {
+                                        handleSubmit();
+                                    }
+                                }} >{loading ? "Please wait..." : "Login"}</button>
                             </div>
                             <div className={styles.helpRow}>
-                                <span className={styles.help}>Already have an account? <Link href="/register" className={styles.high}>Sign Up</Link></span>
+                                <span className={styles.help}>New to sparkz? <Link href="/register" className={styles.high}>Sign Up</Link></span>
                                 <span className={styles.help}>Forgot password</span>
                             </div>
                         </div>
