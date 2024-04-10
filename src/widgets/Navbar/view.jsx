@@ -23,7 +23,7 @@ export default function Navbar() {
 
   const [isNavbarFixed, setIsNavbarFixed] = useState(false);
   const [scrollPosition, setScrollPosition] = useState(0);
-  const [drawerOpen, setDrawerOpen] = useState(true);
+  const [drawerOpen, setDrawerOpen] = useState(false);
   const [token, setToken] = useState(true);
 
   useEffect(() => {
@@ -102,7 +102,7 @@ export default function Navbar() {
           <div className={styles.drawerRow}>
             {navLinks?.map((link) => (
               <>
-                <Link onClick={()=>{
+                <Link key={link?.title} onClick={()=>{
                   setDrawerOpen(false)
                 }} href={link?.link} className={styles.resNavItem}>
                   <span className={styles.resLink}>{link?.title}</span>

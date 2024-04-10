@@ -1,11 +1,16 @@
+"use client"
+
 import React from 'react'
 import styles from '@styles/scss/about.module.scss'
 import Image from 'next/image'
+import { usePathname } from 'next/navigation'
+
 export default function About() {
+  const path = usePathname();
   return (
     <div className={styles.container}>
       <div className={styles.wrapper}>
-        <div className={styles.topRow}>
+        <div className={path === "/aboutus" ? styles.topFlexRow : styles.topRow}>
           <span className={styles.aboutTitle}>About Us</span>
         </div>
         <div className={styles.row}>

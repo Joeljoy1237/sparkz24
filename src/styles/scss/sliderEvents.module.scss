@@ -8,14 +8,14 @@
     align-items: center;
     justify-content: center;
     background: transparent;
-    padding: 10vh 5vw;
+    padding: 10vh 5vw 0;
     gap: 10vh;
     background: linear-gradient(to bottom, #131517f6, transparent), linear-gradient(to top, #131517ec, transparent), ;
 }
 
 @media only screen and (max-width: 880px) {
     .container {
-        // min-height: 100vh;
+        min-height: 100vh;
         display: flex;
         flex-direction: column;
         overflow: hidden;
