@@ -14,10 +14,11 @@ export const userRegister = async (
     department,
     semester,
     password,
+    setLoading
     // toast
 ) => {
+    setLoading(true)
     try {
-        console.log("called")
         const response = await publicGateway.post("/register",{
             firstName,
             lastName,
@@ -33,8 +34,10 @@ export const userRegister = async (
             position: "bottom-center",
             theme:"colored"
         });
+        setLoading(false)
         return true
     } catch (error) {
+        setLoading(false)
         toast.error(error?.response?.data?.message, {
             position: "bottom-center",
             theme:"colored"

@@ -16,6 +16,7 @@ export default function Register() {
   const [department, setDepartment] = useState("");
   const [semester, setSemester] = useState("");
   const [password, setPassword] = useState("");
+const [loading,setLoading]= useState(false)
 
   const router = useRouter();
 
@@ -29,6 +30,7 @@ export default function Register() {
       department,
       semester,
       password,
+      setLoading
       // toast
     );
 
@@ -112,14 +114,13 @@ export default function Register() {
             </div>
 
             <div className={styles.row}>
-              <button className={styles.submit} onClick={(e) => {
+              <button disabled={loading} className={styles.submit} onClick={(e) => {
                 e.preventDefault();
                 handleSubmit();
-              }}>Submit</button>
+              }}>{loading ? "Please wait..." : "Submit"}</button>
             </div>
             <div className={styles.help}>
               <span className={styles.helpText}>Already have an account ? <span className={styles.high}><Link href="/login">Login</Link></span></span>
-              <span className={styles.helpText}>Forgot password?</span>
             </div>
 
           </div>

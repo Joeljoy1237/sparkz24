@@ -61,7 +61,7 @@ export default function Login() {
                                 </div>
                             </div>
                             <div className={styles.loginRow}>
-                                <button className={styles.submit} onClick={(e) => {
+                                <button disabled={loading} className={styles.submit} onClick={(e) => {
                                     e.preventDefault()
                                     if (email === "" | password === "") {
                                         toast.error("Please fill the required fields", {
