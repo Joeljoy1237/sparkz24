@@ -11,7 +11,7 @@ export default function Footer() {
         <div className={styles.container}>
             <div className={styles.wrapper}>
                 <div className={styles.topRow}>
-                    <span className={styles.topTitle}>CONNECT US</span>
+                    <span className={styles.topTitle}>Connect Us</span>
                 </div>
                 <div className={styles.row}>
                     <div className={styles.left}>
