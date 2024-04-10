@@ -115,10 +115,17 @@ export default function Navbar() {
             ))}
           </div>
           <div className={styles.loginResBox}>
-            <button className={styles.loginRes} onClick={() => {
-              router.push('/login');
-              setDrawerOpen(false);
-            }}>Login</button>
+            {token ?
+              <button className={styles.loginRes} onClick={() => {
+                router.push('/profile');
+                setDrawerOpen(false);
+              }}><MdAccountCircle/> Profile</button>
+              :
+              <button className={styles.loginRes} onClick={() => {
+                router.push('/login');
+                setDrawerOpen(false);
+              }}>Login</button>
+            }
           </div>
           <div className={styles.credits}>
             <span className={styles.credit}>All rights reserved®</span>

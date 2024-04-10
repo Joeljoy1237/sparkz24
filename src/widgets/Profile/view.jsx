@@ -27,7 +27,7 @@ export default function Profile() {
         <div className={styles.row}>
           <div className={styles.left}>
             <div className={styles.profileBox}>
-              <div className={styles.boxRow}>
+              <div className={styles.boxRowWelcome}>
                 <span className={styles.welcome}>Welcome, 👋 {user?.firstName} {user?.lastName}</span>
               </div>
               <div className={styles.hr}></div>
@@ -35,6 +35,7 @@ export default function Profile() {
                 <span className={styles.welcome}>Registered Events</span>
                 <Register className={styles.icon} />
               </div>
+              <div className={styles.hrbtm}></div>
               {/* <div className={styles.boxRow} onClick={()=>{
                 router.push('/ticket')
               }}>
