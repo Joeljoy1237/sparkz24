@@ -6,7 +6,7 @@ export default function About() {
     <div className={styles.container}>
       <div className={styles.wrapper}>
         <div className={styles.topRow}>
-          <span className={styles.aboutTitle}>ABOUT US</span>
+          <span className={styles.aboutTitle}>About Us</span>
         </div>
         <div className={styles.row}>
           <div className={styles.left}>
