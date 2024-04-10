@@ -169,7 +169,7 @@
         gap: 1rem;
         margin-top: 2rem;
         position: absolute;
-        bottom: 5vh;
+        bottom: 12vh;
     }
 }
 
@@ -230,5 +230,6 @@
 @media only screen and (max-width: 880px) {
     .clgRes{
         display: flex;
+        font-size: 0.9rem;
     }
 }
