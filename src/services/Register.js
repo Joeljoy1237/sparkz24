@@ -32,7 +32,7 @@ export const userRegister = async (
         console.log(response)
         toast.success(response?.data?.message, {
             position: "bottom-center",
-            theme:"colored"
+            theme:"dark"
         });
         setLoading(false)
         return true
@@ -40,7 +40,7 @@ export const userRegister = async (
         setLoading(false)
         toast.error(error?.response?.data?.message, {
             position: "bottom-center",
-            theme:"colored"
+            theme:"dark"
         });
         return false
     }

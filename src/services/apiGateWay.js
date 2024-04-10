@@ -23,7 +23,7 @@ privateGateway.interceptors.request.use(
         if (!navigator.onLine) {
             toast.error("Network Error. Please check your internet connection.", {
                 position: "bottom-center",
-                theme: "colored"
+                theme: "dark"
             });
 
             // Returning a rejected promise will prevent the request from being sent
@@ -53,7 +53,7 @@ privateGateway.interceptors.response.use(
             // No response and no error status, indicating a network issue
             toast.error("Network Error. Please check your internet connection.", {
                 position: "bottom-center",
-                theme: "colored"
+                theme: "dark"
             });
 
             return Promise.resolve({
@@ -63,7 +63,7 @@ privateGateway.interceptors.response.use(
             // Handle specific error code
             toast.error(error.response?.data?.message + error?.response?.data?.description, {
                 position: "bottom-center",
-                theme: "colored"
+                theme: "dark"
             });
 
             // Wait for 3 seconds

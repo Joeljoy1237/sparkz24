@@ -17,14 +17,14 @@ import { revalidatePath } from 'next/cache'
 //         revalidatePath('/')
 //         toast.success(response?.data?.message, {
 //             position: "bottom-center",
-//             theme:"colored"
+//             theme:"dark"
 //         });
 //         localStorage.setItem('accessToken', response?.data?.accessToken);
 //         return true
 //     } catch (error) {
 //         toast.error(error?.response?.data?.message, {
 //             position: "bottom-center",
-//             theme:"colored"
+//             theme:"dark"
 //         });
 //         return false
 //     }
@@ -55,7 +55,7 @@ export const userLogin = async (
         }
         toast.success(data?.message, {
             position: "bottom-center",
-            theme: "colored"
+            theme: "dark"
         });
 
         if (typeof window !== 'undefined') {
@@ -80,7 +80,7 @@ export const userLogin = async (
         setLoading(false)
         toast.error(error?.message, {
             position: "bottom-center",
-            theme: "colored"
+            theme: "dark"
         });
         console.log(error)
     }

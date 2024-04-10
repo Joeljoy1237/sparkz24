@@ -46,7 +46,7 @@ export default function Profile() {
                 <button className={styles.logout} onClick={() => {
                   localStorage.clear();
                   toast.success('Logout successfull', {
-                    theme: "colored",
+                    theme: "dark",
                     position: "bottom-center"
                   })
                   setTimeout(() => {

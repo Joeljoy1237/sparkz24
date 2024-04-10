@@ -66,7 +66,7 @@ export default function Login() {
                                     if (email === "" | password === "") {
                                         toast.error("Please fill the required fields", {
                                             position: "bottom-center",
-                                            theme: "colored"
+                                            theme: "dark"
                                         });
                                     } else {
                                         handleSubmit();
