@@ -2,8 +2,6 @@
 
 import React from 'react'
 import styles from '@styles/scss/events.module.scss'
-import Image from 'next/image'
-import Link from 'next/link'
 import { depLogo } from '@/common/constants/constants'
 import { useRouter } from 'next/navigation'
 
@@ -21,7 +19,7 @@ export default function Events() {
                     {depLogo?.map((logo) => (
                         <div onClick={()=>{
                             router.push(logo?.url)
-                        }} className={styles.logoBox}>
+                        }} className={styles.logoBox} key={logo?.title}>
                             <span className={styles.logoname}>{logo?.title}</span>
                         </div>
                     ))}
