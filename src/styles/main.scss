@@ -8,6 +8,7 @@ body {
   padding: 0;
   margin: 0;
   color: $font-color;
+
   background: $bg-color;
   overflow-x: hidden;
   font-family: $font-family;
@@ -28,6 +29,13 @@ body {
   margin: 0;
   padding: 0;
   scroll-behavior: smooth;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 a {

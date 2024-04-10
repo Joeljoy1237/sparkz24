@@ -9,7 +9,7 @@ export default function EventList({ eventList }) {
       {eventList?.map((event) => (
         <Suspense>
           <Image onClick={()=>{
-            toast.warn("Registration starts soon.",{
+            toast.info("Registration starts soon.",{
               position:"bottom-center",
               theme:"dark"
             })
