@@ -10,7 +10,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 export const metadata = {
   title: "SPARKZ'24",
-  description: "Official website of SparkzCCET 2024",
+  description: "Official website of SPARKZCCET '23.Sparkz is the State Level Techno Cultural event of Carmel College of Engineering & Technology , Punnapra. Happening on the 19th April and 20th April 2023, this year's SPARKZ is a bold blend of fantasies - Traditional and Modern. Come join us to explore a new world of opportunities!. From a humble beginning four years ago, Sparkz, the annual national-level technical festival of Carmel College of Engineering and Technology Punnapra, has grown into an event that brings out the multitudes of talents and skills hidden in students. It is an attempt to challenge new possibilities, inspire innovation and a platform to showcase and hone our technical talents and skills. As part of Sparkz, several technical and non-technical events are conducted for participants over the two days. A greater focus is placed on the technical events conducted by all four branches. This year events for the school students are also organized to support and encourage budding talents. Participants from various colleges and schools are invited to participate and win the attractive prizes"
 };
 
 export default function RootLayout({ children }) {
