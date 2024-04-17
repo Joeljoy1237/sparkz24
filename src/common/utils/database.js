@@ -5,7 +5,7 @@ let isConnected = false;
 export const connectToDB = async () => {
   mongoose.set("strictQuery", true);
   if (isConnected) {
-    console.log("Already connected");
+    //console"Already connected");
     return;
   }
 
@@ -14,10 +14,10 @@ export const connectToDB = async () => {
       dbName: "sparkz24",
     });
     isConnected = true;
-    console.log("====================================");
-    console.log("Sucessfully connected");
-    console.log("====================================");
+    //console"====================================");
+    //console"Sucessfully connected");
+    //console"====================================");
   } catch (error) {
-    console.log(error);
+    //consoleerror);
   }
 };

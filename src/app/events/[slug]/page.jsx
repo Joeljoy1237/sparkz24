@@ -14,7 +14,7 @@ const DynamicHeader = dynamic(() => import('@/widgets/EventListPage'), {
 
 export default function page() {
   // const router = useRouter();
-  // console.log(router.query)
+  // //consolerouter.query)
   return (
     <>
       <Suspense fallback={<Loader/>}>

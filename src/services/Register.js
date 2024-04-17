@@ -29,7 +29,7 @@ export const userRegister = async (
             semester,
             password,
         })
-        console.log(response)
+        //consoleresponse)
         toast.success(response?.data?.message, {
             position: "bottom-center",
             theme:"dark"

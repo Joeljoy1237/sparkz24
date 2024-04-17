@@ -9,10 +9,10 @@ export const getDepartmentEvents = async (
 ) => {
     try {
         const response = await publicGateway.get(api.getDepEvents + depId);
-        console.log(response)
+        //consoleresponse)
         setEventList(response?.data?.data);
     } catch (error) {
-        console.log(error)
+        //consoleerror)
     }
 
 }
@@ -23,8 +23,8 @@ export const getAllEvents = async (
     try {
         const response = await publicGateway.get(api.getAllEvents)
         setEvents(response?.data?.data)
-        console.log(response)
+        //consoleresponse)
     } catch (error) {
-        console.log(error)
+        //consoleerror)
     }
 }

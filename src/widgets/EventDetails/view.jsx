@@ -6,7 +6,7 @@ import { useParams } from 'next/navigation'
 
 export default function EventDetails() {
     const pathname = useParams()
-    console.log(pathname?.slug)
+    //consolepathname?.slug)
     return (
         <div className={styles.container}>view</div>
     )

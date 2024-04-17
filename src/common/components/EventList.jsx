@@ -9,8 +9,8 @@ export default function EventList({ eventList }) {
   return (
     <div className={styles.container}>
       {eventList?.map((event) => (
-        <Suspense>
-          <Image onClick={()=>{
+        <Suspense key={event?._id}>
+          <Image alt='event' onClick={()=>{
             router.push('/events/cse/'+event?._id)
             toast.info("Registration starts soon.",{
               position:"bottom-center",

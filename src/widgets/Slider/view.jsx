@@ -15,8 +15,8 @@ export default function Slider({
         <div className={styles.container}>
             <div className={styles.sliderContainer}>
                 {events?.map((event) => (
-                    <Image onClick={()=>{
-                        console.log(event)
+                    <Image alt='event' key={event?._id} onClick={()=>{
+                        //consoleevent)
                         // router.push('/'+event?._id)
                         toast.info("Registration starts soon.",{
                           position:"bottom-center",

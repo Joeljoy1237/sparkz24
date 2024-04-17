@@ -63,7 +63,7 @@ export default function LandingPage() {
   }, []);
   return (
     <div className={styles.container}>
-      <Image className={styles.bg} src="/images/bg.jpg" height={1000} width={1000} />
+      <Image alt='logo' className={styles.bg} src="/images/bg.jpg" height={1000} width={1000} />
       <div className={styles.bgOverlay}></div>
       <div className={styles.wrapper}>
         <div className={styles.banner}>

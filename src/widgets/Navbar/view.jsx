@@ -103,7 +103,7 @@ export default function Navbar() {
         <div className={styles.drawer}>
           <div className={styles.drawerRow}>
             {navLinks?.map((link) => (
-              <>
+              <div key={link?.title}>
                 <Link key={link?.title} onClick={() => {
                   setDrawerOpen(false)
                 }} href={link?.link} className={styles.resNavItem}>
@@ -111,7 +111,7 @@ export default function Navbar() {
                   <RightIcon />
                 </Link>
                 <div className={styles.hr}></div>
-              </>
+              </div>
             ))}
           </div>
           <div className={styles.loginResBox}>
