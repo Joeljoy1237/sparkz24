@@ -5,15 +5,19 @@ import styles from '@styles/scss/slider.module.scss'
 import LeftIcon from '@/common/icons/Left'
 import RightIcon from '@/common/icons/RightIcon'
 import { toast } from 'react-toastify'
+import { useRouter } from 'next/navigation'
 
 export default function Slider({
     events
 }) {
+    const router = useRouter()
     return (
         <div className={styles.container}>
             <div className={styles.sliderContainer}>
                 {events?.map((event) => (
                     <Image onClick={()=>{
+                        console.log(event)
+                        // router.push('/'+event?._id)
                         toast.info("Registration starts soon.",{
                           position:"bottom-center",
                           theme:"dark"
