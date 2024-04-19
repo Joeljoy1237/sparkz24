@@ -103,7 +103,7 @@ export default function Navbar() {
         <div className={styles.drawer}>
           <div className={styles.drawerRow}>
             {navLinks?.map((link) => (
-              <div key={link?.title}>
+              <div key={link?.title} className={styles.hrRow}>
                 <Link key={link?.title} onClick={() => {
                   setDrawerOpen(false)
                 }} href={link?.link} className={styles.resNavItem}>
