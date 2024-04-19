@@ -21,7 +21,6 @@ body {
   -moz-transition: all 600ms ease;
   transition: all 600ms ease;
   background: linear-gradient(to right, #131517f6, transparent),
-    /* Left side gradient */
     linear-gradient(to left, #131517f6, transparent), url('/images/bgGraph.svg') center/cover no-repeat fixed;
 }
 
@@ -55,11 +54,6 @@ a {
 *::-webkit-scrollbar-track:hover {
   background-color: $primary;
 }
-
-
-//   html{
-//     font-family: $font-family;
-//   }
 
 .container {
   // min-height: 100vh;
