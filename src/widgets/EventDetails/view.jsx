@@ -8,7 +8,7 @@ import Image from 'next/image'
 
 export default function EventDetails() {
     const pathname = useParams()
-    //consolepathname?.slug)
+
     const [event, setEvent] = useState({});
 
     useEffect(() => {
