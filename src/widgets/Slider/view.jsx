@@ -15,14 +15,14 @@ export default function Slider({
         <div className={styles.container}>
             <div className={styles.sliderContainer}>
                 {events?.map((event) => (
-                    <Image alt='event' key={event?._id} onClick={()=>{
+                    <Image alt='event' key={event?._id} onClick={() => {
                         //consoleevent)
-                        // router.push('/'+event?._id)
-                        toast.info("Registration starts soon.",{
-                          position:"bottom-center",
-                          theme:"dark"
-                        })
-                      }} className={styles.poster} src={event?.imgUrl ? event?.imgUrl : event?.posterImg} height={1000} width={1000} />
+                        router.push(`/events/details/` + event?._id)
+                        // toast.info("Registration starts soon.", {
+                        //     position: "bottom-center",
+                        //     theme: "dark"
+                        // })
+                    }} className={styles.poster} src={event?.imgUrl ? event?.imgUrl : event?.posterImg} height={1000} width={1000} />
                 ))}
             </div>
         </div>

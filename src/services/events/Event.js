@@ -28,3 +28,19 @@ export const getAllEvents = async (
         //consoleerror)
     }
 }
+
+
+export const getEventDetails = async (
+    eventId,
+    setEvents
+) => {
+    try {
+        const response = await publicGateway.post(api.getEventDetailsById, {
+            eventId
+        })
+        setEvents(response?.data?.data)
+        console.log(response)
+    } catch (error) {
+        //consoleerror)
+    }
+}

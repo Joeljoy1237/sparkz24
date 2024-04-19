@@ -54,5 +54,6 @@ export const backend = "https://sparkz-backend.onrender.com/api/v2/user"
 export const api = {
     getAllEvents:"/getAllEvents",
     getFeaturedEvents:"/getFeaturedEvents",
-    getDepEvents:"/getEventList/"
+    getDepEvents:"/getEventList/",
+    getEventDetailsById:"/getEventDetailsById"
 }
