@@ -7,3 +7,7 @@
     padding: 15vh 5vw;
     background: linear-gradient(to bottom, #131517f6, transparent), linear-gradient(to top, #131517c0, transparent), ;
 }
+.form{
+    display: flex;
+    flex-direction: column;
+}
