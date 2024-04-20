@@ -23,7 +23,9 @@ export default function EventListPage() {
       setTitle("Mechanical Engineering");
     } else if (params?.slug.toLocaleLowerCase() === "civil") {
       setTitle("Civil Engineering")
-    }else{
+    } else if (params?.slug.toLocaleLowerCase() === "bsc") {
+      setTitle("Basic Science & Humanities")
+    } else {
       router.push('/not-found')
     }
   }, [])

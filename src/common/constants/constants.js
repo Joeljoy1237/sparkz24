@@ -40,12 +40,12 @@ export const depLogo = [
     {
         title:"Civil Engineering",
         img:"/events/cs.svg",
-        url:"/events/bsc"
+        url:"/events/civil"
     },
     {
         title:"Basic Science & Humanities",
         img:"/events/cs.svg",
-        url:"/events/ce"
+        url:"/events/bsc"
     },
 ]
 
