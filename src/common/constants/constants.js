@@ -1,41 +1,59 @@
 export const navLinks = [
     {
         title:"home",
-        link:"/"
+        link:"/",
+        hr:true
     },
     {
         title:"about us",
-        link:"/aboutus"
+        link:"/aboutus",
+        hr:true
     },
     {
         title:"events",
-        link:"/events"
+        link:"/events",
+        hr:true
     },
     {
         title:"contact us",
-        link:"/contact"
+        link:"/contact",
+        hr:false
     }
 ]
 
 export const depLogo = [
     {
-        img:"/events/department/cs.svg",
+        title:"Computer Science & Engineering",
+        img:"/events/cs.svg",
         url:"/events/cse"
     },
     {
-        img:"/events/department/cs.svg",
+        title:"Electrical & Electronics Engineering",
+        img:"/events/cs.svg",
         url:"/events/eee"
     },
     {
-        img:"/events/department/cs.svg",
+        title:"Mechanical Engineering",
+        img:"/events/cs.svg",
         url:"/events/mech"
     },
     {
-        img:"/events/department/cs.svg",
+        title:"Civil Engineering",
+        img:"/events/cs.svg",
         url:"/events/bsc"
     },
     {
-        img:"/events/department/cs.svg",
+        title:"Basic Science & Humanities",
+        img:"/events/cs.svg",
         url:"/events/ce"
     },
 ]
+
+export const backend = "https://sparkz-backend.onrender.com/api/v2/user"
+
+export const api = {
+    getAllEvents:"/getAllEvents",
+    getFeaturedEvents:"/getFeaturedEvents",
+    getDepEvents:"/getEventList/",
+    getEventDetailsById:"/getEventDetailsById"
+}

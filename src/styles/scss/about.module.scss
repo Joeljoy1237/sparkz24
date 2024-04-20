@@ -2,11 +2,22 @@
 
 .container {
     padding: 15vh 5vw;
-    min-height: 100vh;
+    // min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(to bottom, #131517f6, transparent), linear-gradient(to top, #13151700, transparent), ;
+    background: linear-gradient(to bottom, #131517, transparent), linear-gradient(to top, #131517c4, transparent), ;
+}
+
+@media only screen and (max-width: 880px) {
+    .container {
+        padding: 10vh 5vw;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(to bottom, #131517, transparent), linear-gradient(to top, #131517c4, transparent), ;
+    }
 }
 
 // .wrap{
@@ -20,16 +31,43 @@
     gap: 5vh;
 }
 
+.topFlexRow{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
 .aboutTitle {
     font-weight: 700;
-    font-size: 1.5rem;
+    font-size: 3vw;
+    background: -webkit-linear-gradient(45deg, rgb(255, 255, 255), $primary, $primary, rgb(255, 255, 255)) text;
+    -webkit-text-fill-color: transparent;
+}
 
+@media only screen and (max-width: 880px) {
+    .aboutTitle{
+        font-size: 1.5rem;
+        background: -webkit-linear-gradient(45deg, rgb(255, 255, 255), $primary, $primary, rgb(255, 255, 255)) text;
+        -webkit-text-fill-color: transparent;
+        font-weight: 600;
+    }
 }
 
 .row {
     display: flex;
     align-items: center;
     justify-content: space-between;
+}
+
+@media only screen and (max-width: 880px) {
+    .row {
+        display: flex;
+        flex-direction: column-reverse;
+        align-items: center;
+        gap: 3vh;
+        justify-content: space-between;
+    }
 }
 
 .left {
@@ -49,4 +87,10 @@
 
 .logo {
     width: 15rem;
+}
+
+@media only screen and (max-width: 880px) {
+    .logo {
+        width: 10rem;
+    }
 }
