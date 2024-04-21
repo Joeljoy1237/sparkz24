@@ -2,25 +2,34 @@
 
 import React, { useEffect, useState } from 'react'
 import styles from '@styles/scss/eventDetails.module.scss'
-import { useParams } from 'next/navigation'
+import { useParams, useRouter } from 'next/navigation'
 import { getAllEvents, getEventDetails, getEventDetailsByToken } from '@/services/events/Event'
 import Image from 'next/image'
 
 export default function EventDetails() {
-    const pathname = useParams()
+    const params = useParams()
+    const router = useRouter();
     //consolepathname?.slug)
     const [event, setEvent] = useState({});
-    // console.log(token)
+        // console.log(token)
     useEffect(() => {
         const token = localStorage.getItem('accessToken');
         if (token) {
             console.log(localStorage.getItem('accessToken'))
             console.log("called")
-            getEventDetailsByToken(pathname?.id, setEvent);
+            getEventDetailsByToken(params?.id, setEvent);
         } else {
-            getEventDetails(pathname?.id, setEvent);
+            getEventDetails(params?.id, setEvent);
         }
     }, [])
+
+    const handleClick = (e)=>{
+        e.preventDefault();
+        if(params?.slug === "bsc"){
+            router?.push(`/events/${params?.slug}/${event?._id}/${event?.title}`)
+        }
+    }
+
     return (
         <div className={styles.container}>
             <div className={styles.wrap}>
@@ -29,7 +38,9 @@ export default function EventDetails() {
                         <div className={styles.boxrow}>
                             <div className={styles.left}>
                                 <Image src={event?.posterImg} height={1000} width={1000} className={styles.poster} />
-                                <button className={styles.register}>{event?.isRegistered ? "Already Registered" : "Registrations starts soon !!!"}</button>
+                                <button onClick={(e)=>{
+                                    handleClick(e)
+                                }} className={styles.register}>{event?.isRegistered ? "Already Registered" : "Registrations starts soon !!!"}</button>
                             </div>
                             <div className={styles.hr}></div>
                             <div className={styles.right}>

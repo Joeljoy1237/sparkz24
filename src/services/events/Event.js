@@ -50,12 +50,27 @@ export const getEventDetailsByToken = async (
     setEvents
 ) => {
     try {
-        const response = await privateGateway.post(protectedRoute.getAllEventDetailsWithToken,{
+        const response = await privateGateway.post(protectedRoute.getAllEventDetailsWithToken, {
             eventId
         })
         setEvents(response?.data?.data)
         console.log(response)
     } catch (error) {
         //consoleerror)
+    }
+}
+
+export const eventRegistrationByBsc = async (
+    eventId,
+    team
+) => {
+    try {
+        const response = await privateGateway.post(protectedRoute?.registerWithTeam, {
+            eventId,
+            team
+        })
+        console.log(response)
+    } catch (error) {
+        console.log(error)
     }
 }

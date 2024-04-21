@@ -1,16 +1,24 @@
 "use client"
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from '@styles/scss/registration.module.scss';
+import { useParams } from 'next/navigation';
+import { eventRegistrationByBsc } from '@/services/events/Event';
+import { toast } from 'react-toastify';
 
 export default function Registration() {
   const [category, setCategory] = useState("");
   const [count, setCount] = useState(1);
+  const [limitCount, setLimitCount] = useState(1);
+  const [eventName, setEventName] = useState("");
+  const [error, setError] = useState(false);
+  const params = useParams();
+
   const [inputFields, setInputFields] = useState([
-    { name: "", age: "", category: "", school: "", schoolAddress: "" }
+    { studentName: "", dob: "", category: "", school: "", schoolAddress: "" }
   ]);
 
   const addFields = () => {
-    let newField = { name: '', age: '', category: '', school: '', schoolAddress: '' };
+    let newField = { name: '', dob: '', category: '', school: '', schoolAddress: '' };
     setInputFields([...inputFields, newField]);
   };
 
@@ -19,6 +27,26 @@ export default function Registration() {
     console.log(category)
   };
   const handleSubmit = () => {
+    console.log(inputFields?.length)
+    if (eventName === "battle_of_brains") {
+      if (inputFields?.length !== 2) {
+        toast.error("Please add a team mate",{
+          position:"top-right",
+          theme:"dark"
+        })
+        setError(true);
+      } else {
+        eventRegistrationByBsc(params?.id, inputFields)
+      }
+    } else if (eventName === "keam") {
+      if (inputFields?.length !== 1) {
+        setError(true);
+      } else {
+        eventRegistrationByBsc(params?.id, inputFields)
+      }
+    } else if (eventName === "science_safari") {
+      eventRegistrationByBsc(params?.id, inputFields)
+    }
     console.log(inputFields);
   }
   const renderClassOptions = () => {
@@ -47,55 +75,98 @@ export default function Registration() {
     setInputFields(data);
   };
 
+  useEffect(() => {
+    if (params?.id === "6622a712fb936731489d7804") {
+      setEventName("keam");
+      setLimitCount(1)
+    } else if (params?.id === "66229fc7f72415dc4ce07ad5") {
+      setEventName("science_safari")
+      setLimitCount(5)
+    } else if (params?.id === "6622a7e3fb936731489d7807") {
+      setEventName("battle_of_brains")
+      setLimitCount(2)
+    }
+  }, [])
+
   return (
     <div className={styles.container}>
       <div className={styles.wrap}>
         <div className={styles.row}>
           <div className={styles.form}>
             {inputFields.map((input, index) => (
-              <div className={styles.formwrap}>
+              <div className={styles.formwrap} key={index}>
                 <div className={styles.formTop}>
                   <span className={styles.formTitle}>
-                    Team Member {index+1}
+                    {eventName === "keam" ? "Student Details" : `Team Member ${index + 1}`}
                   </span>
                 </div>
-                <div key={index} className={styles.DataRow}>
+                <div className={styles.DataRow}>
                   <input
                     className={styles.txtField}
-                    name='name'
+                    name='studentName'
                     placeholder='Name'
                     value={input.name}
                     onChange={event => handleFormChange(index, event)}
                   />
-                  <input
+                  {/* <input
                     className={styles.txtField}
                     name='age'
                     placeholder='Age'
                     value={input.age}
                     onChange={event => handleFormChange(index, event)}
-                  />
-                  <select
+                  /> */}
+                  <input
                     className={styles.txtField}
-                    name="category"
-                    value={input.category}
-                    onChange={event => {
-                      handleFormChange(index, event)
-                      handleCategoryChange(event);
-                    }}
-                  >
-                    <option value="0">Select Category</option>
-                    <option value="1">Category 1</option>
-                    <option value="2">Category 2</option>
-                  </select>
-                  <select
-                    className={styles.txtField}
-                    name="class"
-                    value={input.class}
+                    name='dob'
+                    type='date'
+                    placeholder='Age'
+                    value={input?.dob}
                     onChange={event => handleFormChange(index, event)}
-                  >
-                    <option value="" disabled>Select Class</option>
-                    {renderClassOptions()}
-                  </select>
+                  />
+                  {eventName !== "keam" &&
+                    <select
+                      className={styles.txtField}
+                      name="category"
+                      value={input.category}
+                      onChange={event => {
+                        handleFormChange(index, event)
+                        handleCategoryChange(event);
+                      }}
+                    >
+                      <option value="0">Select Category</option>
+                      <option value="1">Category 1</option>
+                      <option value="2">Category 2</option>
+                    </select>
+                  }
+                  {
+                    eventName !== "keam" &&
+                    <select
+                      className={styles.txtField}
+                      name="class"
+                      value={input.class}
+                      onChange={event => handleFormChange(index, event)}
+                    >
+                      <option value="" disabled>Select Class</option>
+                      {renderClassOptions()}
+                    </select>
+                  }
+                  {
+                    eventName === "keam" &&
+                    <select
+                      className={styles.txtField}
+                      name="class"
+                      value={input.class}
+                      onChange={event => handleFormChange(index, event)}
+                    >
+                      <option value="">Select Class</option>
+                      <option value="8">Class VIII</option>
+                      <option value="9">Class IX</option>
+                      <option value="10">Class X</option>
+                      <option value="10">Class XI</option>
+                      <option value="10">Class XII</option>
+                      <option value="Other">Other</option>
+                    </select>
+                  }
                   <input
                     className={styles.txtField}
                     name='school'
@@ -114,7 +185,7 @@ export default function Registration() {
               </div>
             ))}
             <div className={styles.actionRow}>
-              {count < 5 && (
+              {count < limitCount && (
                 <button className={styles.action} type='button' onClick={() => {
                   addFields();
                   setCount(count + 1);
