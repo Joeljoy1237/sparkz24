@@ -28,7 +28,7 @@ export default function EventDetails() {
     const handleClick = (e) => {
         if (token) {
             e.preventDefault();
-            if (params?.slug === "bsc") {
+            if (params?.slug === "bsc" && !isRegistered) {
                 router?.push(`/events/${params?.slug}/${event?._id}/${event?.title}`)
             } else {
                 eventRegistration(params?.id, router, params?.slug, setIsRegistered)
