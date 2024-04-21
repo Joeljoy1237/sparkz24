@@ -53,7 +53,7 @@ export default function Login() {
                             <div className={styles.loginCol}>
                                 <div className={styles.inputBox}>
                                     <span className={styles.label}>Email</span>
-                                    <input onChange={(e) => setEmail(e.target.value)} type="text" className={styles.inputField} placeholder='example@gmail.com' />
+                                    <input onChange={(e) => setEmail(e.target.value)} type="email" className={styles.inputField} placeholder='example@gmail.com' />
                                 </div>
                                 <div className={styles.inputBox}>
                                     <span className={styles.label}>Password</span>

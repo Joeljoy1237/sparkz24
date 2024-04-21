@@ -11,6 +11,8 @@ export default function Registration() {
   const [limitCount, setLimitCount] = useState(1);
   const [eventName, setEventName] = useState("");
   const [error, setError] = useState(false);
+  const [categoryRendered, setCategoryRendered] = useState(false);
+
   const params = useParams();
   const router = useRouter();
 
@@ -19,7 +21,7 @@ export default function Registration() {
   ]);
 
   const addFields = () => {
-    let newField = { name: '', dob: '', category: '', school: '', schoolAddress: '' };
+    let newField = { name: '', dob: '', school: '', schoolAddress: '' };
     setInputFields([...inputFields, newField]);
   };
 
@@ -31,22 +33,22 @@ export default function Registration() {
   const handleSubmit = () => {
     if (eventName === "battle_of_brains") {
       if (inputFields?.length !== 2) {
-        toast.error("Please add a team mate",{
-          position:"top-right",
-          theme:"dark"
+        toast.error("Please add a team mate", {
+          position: "top-right",
+          theme: "dark"
         })
         setError(true);
       } else {
-        eventRegistrationByBsc(params?.id, inputFields,router)
+        eventRegistrationByBsc(params?.id, inputFields, router)
       }
     } else if (eventName === "keam") {
       if (inputFields?.length !== 1) {
         setError(true);
       } else {
-        eventRegistrationByBsc(params?.id, inputFields,router)
+        eventRegistrationByBsc(params?.id, inputFields, router)
       }
     } else if (eventName === "science_safari") {
-      eventRegistrationByBsc(params?.id, inputFields,router)
+      eventRegistrationByBsc(params?.id, inputFields, router)
     }
   }
 
@@ -101,6 +103,24 @@ export default function Registration() {
                     {eventName === "keam" ? "Student Details" : `Team Member ${index + 1}`}
                   </span>
                 </div>
+                {eventName !== "keam" && (index === 0 || !categoryRendered) && // Render only for the first member or if not rendered yet
+                  <>
+                    <select
+                      className={styles.txtField}
+                      name="category"
+                      value={input.category}
+                      onChange={event => {
+                        handleFormChange(index, event)
+                        handleCategoryChange(event);
+                        setCategoryRendered(true); // Set the flag to true after rendering for the first member
+                      }}
+                    >
+                      <option value="0">Select Category</option>
+                      <option value="1">Category 1</option>
+                      <option value="2">Category 2</option>
+                    </select>
+                  </>
+                }
                 <div className={styles.DataRow}>
                   <input
                     className={styles.txtField}
@@ -124,21 +144,6 @@ export default function Registration() {
                     value={input?.dob}
                     onChange={event => handleFormChange(index, event)}
                   />
-                  {eventName !== "keam" &&
-                    <select
-                      className={styles.txtField}
-                      name="category"
-                      value={input.category}
-                      onChange={event => {
-                        handleFormChange(index, event)
-                        handleCategoryChange(event);
-                      }}
-                    >
-                      <option value="0">Select Category</option>
-                      <option value="1">Category 1</option>
-                      <option value="2">Category 2</option>
-                    </select>
-                  }
                   {
                     eventName !== "keam" &&
                     <select

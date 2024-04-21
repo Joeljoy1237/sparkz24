@@ -10,7 +10,7 @@ import { toast } from 'react-toastify'
 export default function EventDetails() {
     const [event, setEvent] = useState({});
     const [token, setToken] = useState(null);
-    const [isRegistered,setIsRegistered] = useState(false)
+    const [isRegistered, setIsRegistered] = useState(false)
 
     const params = useParams()
     const router = useRouter();
@@ -19,7 +19,7 @@ export default function EventDetails() {
         const accessToken = localStorage.getItem('accessToken');
         setToken(accessToken)
         if (accessToken) {
-            getEventDetailsByToken(params?.id, setEvent,setIsRegistered);
+            getEventDetailsByToken(params?.id, setEvent, setIsRegistered);
         } else {
             getEventDetails(params?.id, setEvent);
         }
@@ -30,11 +30,13 @@ export default function EventDetails() {
             e.preventDefault();
             if (params?.slug === "bsc") {
                 router?.push(`/events/${params?.slug}/${event?._id}/${event?.title}`)
-            }else{
-                eventRegistration(params?.id,router,params?.slug,setIsRegistered)
+            } else {
+                eventRegistration(params?.id, router, params?.slug, setIsRegistered)
             }
         } else {
-            toast.info("Please login to continue");
+            toast.info("Please login to continue", {
+                theme: "dark"
+            });
             router.push('/login')
         }
     }
