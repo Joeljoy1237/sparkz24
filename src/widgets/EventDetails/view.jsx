@@ -3,16 +3,23 @@
 import React, { useEffect, useState } from 'react'
 import styles from '@styles/scss/eventDetails.module.scss'
 import { useParams } from 'next/navigation'
-import { getAllEvents, getEventDetails } from '@/services/events/Event'
+import { getAllEvents, getEventDetails, getEventDetailsByToken } from '@/services/events/Event'
 import Image from 'next/image'
 
 export default function EventDetails() {
     const pathname = useParams()
     //consolepathname?.slug)
     const [event, setEvent] = useState({});
-
+    // console.log(token)
     useEffect(() => {
-        getEventDetails(pathname?.id, setEvent);
+        const token = localStorage.getItem('accessToken');
+        if (token) {
+            console.log(localStorage.getItem('accessToken'))
+            console.log("called")
+            getEventDetailsByToken(pathname?.id, setEvent);
+        } else {
+            getEventDetails(pathname?.id, setEvent);
+        }
     }, [])
     return (
         <div className={styles.container}>
@@ -22,7 +29,7 @@ export default function EventDetails() {
                         <div className={styles.boxrow}>
                             <div className={styles.left}>
                                 <Image src={event?.posterImg} height={1000} width={1000} className={styles.poster} />
-                                <button className={styles.register}>Registrations starts soon !!!</button>
+                                <button className={styles.register}>{event?.isRegistered ? "Already Registered" : "Registrations starts soon !!!"}</button>
                             </div>
                             <div className={styles.hr}></div>
                             <div className={styles.right}>
@@ -94,14 +101,14 @@ export default function EventDetails() {
                                     <span className={styles.contactTitle}>Contact</span>
                                 </div> */}
                                 <div className={styles.contactRow}>
-                                {event?.cordinator?.map((item) => (
-                                    <div className={styles.contactBox}>
-                                        <span className={styles.cordinatorDetail}>{item?.name}</span>
-                                        <span className={styles.cordinatorDetail}>{item?.contact}</span>
-                                    </div>
-                                ))}
+                                    {event?.cordinator?.map((item) => (
+                                        <div className={styles.contactBox}>
+                                            <span className={styles.cordinatorDetail}>{item?.name}</span>
+                                            <span className={styles.cordinatorDetail}>{item?.contact}</span>
+                                        </div>
+                                    ))}
                                 </div>
-                                
+
                             </div>
                         </div>
                     </div>

@@ -57,3 +57,7 @@ export const api = {
     getDepEvents:"/getEventList/",
     getEventDetailsById:"/getEventDetailsById"
 }
+
+export const protectedRoute = {
+    getAllEventDetailsWithToken :"/getEventDetailsByIdForLoggedInUsers/"
+}

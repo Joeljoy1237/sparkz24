@@ -1,7 +1,7 @@
 "use client"
 
-import { api } from "@/common/constants/constants"
-import { publicGateway } from "../apiGateWay"
+import { api, protectedRoute } from "@/common/constants/constants"
+import { privateGateway, publicGateway } from "../apiGateWay"
 
 export const getDepartmentEvents = async (
     depId,
@@ -36,6 +36,21 @@ export const getEventDetails = async (
 ) => {
     try {
         const response = await publicGateway.post(api.getEventDetailsById, {
+            eventId
+        })
+        setEvents(response?.data?.data)
+        console.log(response)
+    } catch (error) {
+        //consoleerror)
+    }
+}
+
+export const getEventDetailsByToken = async (
+    eventId,
+    setEvents
+) => {
+    try {
+        const response = await privateGateway.post(protectedRoute.getAllEventDetailsWithToken,{
             eventId
         })
         setEvents(response?.data?.data)
