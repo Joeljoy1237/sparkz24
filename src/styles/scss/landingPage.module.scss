@@ -1,5 +1,9 @@
 @import 'variables';
 
+.parent{
+       background: linear-gradient(to bottom, #0d0e0f, transparent), linear-gradient(to top, #131517e8, transparent), ;
+}
+
 .container {
     display: flex;
     min-height: 100vh;
