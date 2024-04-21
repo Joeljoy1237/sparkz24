@@ -17,7 +17,7 @@ export default function Registration() {
   const router = useRouter();
 
   const [inputFields, setInputFields] = useState([
-    { studentName: "", dob: "", category: "", school: "", schoolAddress: "" }
+    { studentName: "", dob: null, category: "", school: "", schoolAddress: "" }
   ]);
 
   const addFields = () => {
@@ -141,7 +141,7 @@ export default function Registration() {
                     name='dob'
                     type='date'
                     placeholder='DD/MM/YYYY'
-                    value={input?.dob}
+                    value={input?.dob || ''}
                     onChange={event => handleFormChange(index, event)}
                   />
                   {
