@@ -12,6 +12,7 @@ export default function Registration() {
   const [eventName, setEventName] = useState("");
   const [error, setError] = useState(false);
   const [categoryRendered, setCategoryRendered] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const params = useParams();
   const router = useRouter();
@@ -39,16 +40,16 @@ export default function Registration() {
         })
         setError(true);
       } else {
-        eventRegistrationByBsc(params?.id, inputFields, router)
+        eventRegistrationByBsc(params?.id, inputFields, router, setLoading)
       }
     } else if (eventName === "keam") {
       if (inputFields?.length !== 1) {
         setError(true);
       } else {
-        eventRegistrationByBsc(params?.id, inputFields, router)
+        eventRegistrationByBsc(params?.id, inputFields, router, setLoading)
       }
     } else if (eventName === "science_safari") {
-      eventRegistrationByBsc(params?.id, inputFields, router)
+      eventRegistrationByBsc(params?.id, inputFields, router, setLoading)
     }
   }
 
@@ -198,7 +199,7 @@ export default function Registration() {
                   setCount(count + 1);
                 }}>Add another member..</button>
               )}
-              <button className={styles.submit} type='submit' onClick={(e) => { e.preventDefault(); handleSubmit() }}>Submit</button>
+              <button disabled={loading} className={styles.submit} type='submit' onClick={(e) => { e.preventDefault(); handleSubmit() }}>{loading ? "Submitting" : "Submit"}</button>
             </div>
           </div>
         </div>

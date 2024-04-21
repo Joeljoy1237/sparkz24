@@ -55,97 +55,98 @@ export default function EventDetails() {
                                 <div className={styles.boxrow}>
                                     <div className={styles.left}>
                                         <Image src={event?.posterImg} height={1000} width={1000} className={styles.poster} />
-                                        <button onClick={(e) => {
+                                        <button disabled={loading} onClick={(e) => {
                                             handleClick(e)
-                                        }} className={styles.register}>{isRegistered ? "Registered" : "Register"}</button>
+                                        }} className={styles.register}>{isRegistered ? "Registered" : <>{loading ? "Registering" : "Register"}</>}
+                                        </button>
                                     </div>
-                                    <div className={styles.hr}></div>
-                                    <div className={styles.right}>
-                                        <div className={styles.rightRow}>
-                                            <span className={styles.eventName}>{event?.title}</span>
-                                        </div>
-                                        {event?.priceCount !== 0 &&
-                                            <div className={styles.rightRow}>
-                                                <div className={event?.priceCount > 1 ? styles.prizeBoxspace : styles.prizeBox}>
-                                                    {event?.priceCount >= 1 &&
-                                                        <div className={styles.prize}>
-                                                            <Image width={1000} height={1000} className={styles.prizeicon} src={"/images/first.png"} />
-                                                            <span className={styles.prizeAmt}>{event?.firstPrize}</span>                                        </div>
-                                                    }
-                                                    {event?.priceCount >= 2 &&
-                                                        <div className={styles.prize}>
-                                                            <Image width={1000} height={1000} className={styles.prizeicon} src={"/images/second.png"} />
-                                                            <span className={styles.prizeAmt}>{event?.firstPrize}</span>                                        </div>
-                                                    }
-                                                    {event?.priceCount >= 3 &&
-                                                        <div className={styles.prize}>
-                                                            <Image width={1000} height={1000} className={styles.prizeicon} src={"/images/third.png"} />
-                                                            <span className={styles.prizeAmt}>{event?.firstPrize}</span>                                        </div>
-                                                    }
+                                            <div className={styles.hr}></div>
+                                            <div className={styles.right}>
+                                                <div className={styles.rightRow}>
+                                                    <span className={styles.eventName}>{event?.title}</span>
                                                 </div>
-                                            </div>
-                                        }
-                                        <div className={styles.rightRow}>
-                                            <div className={styles.typeBox}>
-                                                <span className={styles.data}>{event?.type}</span>
-                                            </div>
-                                            {event?.venue &&
-                                                <div className={styles.typeBox}>
-                                                    <span className={styles.data}>{event?.venue}</span>
-                                                </div>
-                                            }
-                                        </div>
-                                        <div className={styles.rightRow}>
-                                            {event?.date &&
-                                                <div className={styles.typeBox}>
-                                                    <span className={styles.data}>{event?.date} {event?.time &&
-                                                        <>
-                                                            | {event?.time}
-                                                        </>
-                                                    }</span>
-                                                </div>
-                                            }
-                                        </div>
-                                        <div className={styles.rightRow}>
-                                            <span className={styles.data}>{event?.desc?.slice(0, 250)}......</span>
-                                        </div>
-                                        {event?.rules &&
-                                            <div className={styles.rightRow}>
-                                                <div className={styles.ruleWrap}>
-                                                    <span className={styles.data}>Rules and Regulations:</span>
-                                                    <div className={styles.ruleBox}>
-                                                        {event?.rules?.map((rule) => (
-                                                            <span className={styles.data}>🚀{" "}{rule}</span>
-                                                        ))}
+                                                {event?.priceCount !== 0 &&
+                                                    <div className={styles.rightRow}>
+                                                        <div className={event?.priceCount > 1 ? styles.prizeBoxspace : styles.prizeBox}>
+                                                            {event?.priceCount >= 1 &&
+                                                                <div className={styles.prize}>
+                                                                    <Image width={1000} height={1000} className={styles.prizeicon} src={"/images/first.png"} />
+                                                                    <span className={styles.prizeAmt}>{event?.firstPrize}</span>                                        </div>
+                                                            }
+                                                            {event?.priceCount >= 2 &&
+                                                                <div className={styles.prize}>
+                                                                    <Image width={1000} height={1000} className={styles.prizeicon} src={"/images/second.png"} />
+                                                                    <span className={styles.prizeAmt}>{event?.firstPrize}</span>                                        </div>
+                                                            }
+                                                            {event?.priceCount >= 3 &&
+                                                                <div className={styles.prize}>
+                                                                    <Image width={1000} height={1000} className={styles.prizeicon} src={"/images/third.png"} />
+                                                                    <span className={styles.prizeAmt}>{event?.firstPrize}</span>                                        </div>
+                                                            }
+                                                        </div>
                                                     </div>
+                                                }
+                                                <div className={styles.rightRow}>
+                                                    <div className={styles.typeBox}>
+                                                        <span className={styles.data}>{event?.type}</span>
+                                                    </div>
+                                                    {event?.venue &&
+                                                        <div className={styles.typeBox}>
+                                                            <span className={styles.data}>{event?.venue}</span>
+                                                        </div>
+                                                    }
                                                 </div>
+                                                <div className={styles.rightRow}>
+                                                    {event?.date &&
+                                                        <div className={styles.typeBox}>
+                                                            <span className={styles.data}>{event?.date} {event?.time &&
+                                                                <>
+                                                                    | {event?.time}
+                                                                </>
+                                                            }</span>
+                                                        </div>
+                                                    }
+                                                </div>
+                                                <div className={styles.rightRow}>
+                                                    <span className={styles.data}>{event?.desc?.slice(0, 250)}......</span>
+                                                </div>
+                                                {event?.rules &&
+                                                    <div className={styles.rightRow}>
+                                                        <div className={styles.ruleWrap}>
+                                                            <span className={styles.data}>Rules and Regulations:</span>
+                                                            <div className={styles.ruleBox}>
+                                                                {event?.rules?.map((rule) => (
+                                                                    <span className={styles.data}>🚀{" "}{rule}</span>
+                                                                ))}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                }
+                                                <div className={styles.rightRow}></div>
                                             </div>
-                                        }
-                                        <div className={styles.rightRow}></div>
                                     </div>
-                                </div>
-                                <div className={styles.hrrow}></div>
-                                <div className={styles.boxrow}>
-                                    <div className={styles.innerRow}>
-                                        {/* <div className={styles.contactRow}>
+                                    <div className={styles.hrrow}></div>
+                                    <div className={styles.boxrow}>
+                                        <div className={styles.innerRow}>
+                                            {/* <div className={styles.contactRow}>
                                     <span className={styles.contactTitle}>Contact</span>
                                 </div> */}
-                                        <div className={styles.contactRow}>
-                                            {event?.cordinator?.map((item) => (
-                                                <div className={styles.contactBox}>
-                                                    <span className={styles.cordinatorDetail}>{item?.name}</span>
-                                                    <span className={styles.cordinatorDetail}>{item?.contact}</span>
-                                                </div>
-                                            ))}
-                                        </div>
+                                            <div className={styles.contactRow}>
+                                                {event?.cordinator?.map((item) => (
+                                                    <div className={styles.contactBox}>
+                                                        <span className={styles.cordinatorDetail}>{item?.name}</span>
+                                                        <span className={styles.cordinatorDetail}>{item?.contact}</span>
+                                                    </div>
+                                                ))}
+                                            </div>
 
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
             }
-        </>
+                </>
     )
 }
