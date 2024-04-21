@@ -12,7 +12,9 @@
 .wrap{
     width: 100%;
     padding: 2rem 0;
+    gap: 4vh;
 }
+
 
 .logo {
     height: 15rem;
@@ -21,8 +23,8 @@
 
 @media only screen and (max-width: 880px) {
     .logo {
-        height: 10rem;
-        width: 10rem;
+        height: 7rem;
+        width: 7rem;
     }
 }
 
@@ -33,7 +35,7 @@
 
 .scrollRow {
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     align-items: center;
     justify-content: center;
     gap: 3vw;
@@ -42,7 +44,7 @@
 @media only screen and (max-width: 880px) {
     .scrollRow {
         display: flex;
-        flex-wrap: wrap;
+        flex-wrap: nowrap;
         align-items: center;
         justify-content: center;
         gap: 4vh;
