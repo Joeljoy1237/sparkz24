@@ -140,7 +140,7 @@ export default function Registration() {
                     className={styles.txtField}
                     name='dob'
                     type='date'
-                    placeholder='Age'
+                    placeholder='DD/MM/YYYY'
                     value={input?.dob}
                     onChange={event => handleFormChange(index, event)}
                   />
