@@ -58,25 +58,27 @@ export default function EventDetails() {
                                 <div className={styles.rightRow}>
                                     <span className={styles.eventName}>{event?.title}</span>
                                 </div>
-                                <div className={styles.rightRow}>
-                                    <div className={event?.priceCount > 1 ? styles.prizeBoxspace : styles.prizeBox}>
-                                        {event?.priceCount >= 1 &&
-                                            <div className={styles.prize}>
-                                                <Image width={1000} height={1000} className={styles.prizeicon} src={"/images/first.png"} />
-                                                <span className={styles.prizeAmt}>{event?.firstPrize}</span>                                        </div>
-                                        }
-                                        {event?.priceCount >= 2 &&
-                                            <div className={styles.prize}>
-                                                <Image width={1000} height={1000} className={styles.prizeicon} src={"/images/second.png"} />
-                                                <span className={styles.prizeAmt}>{event?.firstPrize}</span>                                        </div>
-                                        }
-                                        {event?.priceCount >= 3 &&
-                                            <div className={styles.prize}>
-                                                <Image width={1000} height={1000} className={styles.prizeicon} src={"/images/third.png"} />
-                                                <span className={styles.prizeAmt}>{event?.firstPrize}</span>                                        </div>
-                                        }
+                                {event?.priceCount !== 0 &&
+                                    <div className={styles.rightRow}>
+                                        <div className={event?.priceCount > 1 ? styles.prizeBoxspace : styles.prizeBox}>
+                                            {event?.priceCount >= 1 &&
+                                                <div className={styles.prize}>
+                                                    <Image width={1000} height={1000} className={styles.prizeicon} src={"/images/first.png"} />
+                                                    <span className={styles.prizeAmt}>{event?.firstPrize}</span>                                        </div>
+                                            }
+                                            {event?.priceCount >= 2 &&
+                                                <div className={styles.prize}>
+                                                    <Image width={1000} height={1000} className={styles.prizeicon} src={"/images/second.png"} />
+                                                    <span className={styles.prizeAmt}>{event?.firstPrize}</span>                                        </div>
+                                            }
+                                            {event?.priceCount >= 3 &&
+                                                <div className={styles.prize}>
+                                                    <Image width={1000} height={1000} className={styles.prizeicon} src={"/images/third.png"} />
+                                                    <span className={styles.prizeAmt}>{event?.firstPrize}</span>                                        </div>
+                                            }
+                                        </div>
                                     </div>
-                                </div>
+                                }
                                 <div className={styles.rightRow}>
                                     <div className={styles.typeBox}>
                                         <span className={styles.data}>{event?.type}</span>
