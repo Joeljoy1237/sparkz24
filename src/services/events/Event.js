@@ -2,6 +2,7 @@
 
 import { api, protectedRoute } from "@/common/constants/constants"
 import { privateGateway, publicGateway } from "../apiGateWay"
+import { toast } from "react-toastify";
 
 export const getDepartmentEvents = async (
     depId,
@@ -62,15 +63,22 @@ export const getEventDetailsByToken = async (
 
 export const eventRegistrationByBsc = async (
     eventId,
-    team
+    team,
+    router
 ) => {
     try {
         const response = await privateGateway.post(protectedRoute?.registerWithTeam, {
             eventId,
             team
+        });
+        toast.success("Registered successfully.", {
+            theme: "dark"
         })
-        console.log(response)
+        router.push('/events/bsc')
     } catch (error) {
         console.log(error)
+        toast.error(error?.response?.data?.message, {
+            theme: "dark"
+        })
     }
 }

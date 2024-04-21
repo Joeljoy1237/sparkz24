@@ -1,7 +1,7 @@
 "use client"
 import React, { useEffect, useState } from 'react';
 import styles from '@styles/scss/registration.module.scss';
-import { useParams } from 'next/navigation';
+import { useParams, useRouter } from 'next/navigation';
 import { eventRegistrationByBsc } from '@/services/events/Event';
 import { toast } from 'react-toastify';
 
@@ -12,6 +12,7 @@ export default function Registration() {
   const [eventName, setEventName] = useState("");
   const [error, setError] = useState(false);
   const params = useParams();
+  const router = useRouter();
 
   const [inputFields, setInputFields] = useState([
     { studentName: "", dob: "", category: "", school: "", schoolAddress: "" }
@@ -26,8 +27,8 @@ export default function Registration() {
     setCategory(event.target.value);
     console.log(category)
   };
+
   const handleSubmit = () => {
-    console.log(inputFields?.length)
     if (eventName === "battle_of_brains") {
       if (inputFields?.length !== 2) {
         toast.error("Please add a team mate",{
@@ -36,19 +37,19 @@ export default function Registration() {
         })
         setError(true);
       } else {
-        eventRegistrationByBsc(params?.id, inputFields)
+        eventRegistrationByBsc(params?.id, inputFields,router)
       }
     } else if (eventName === "keam") {
       if (inputFields?.length !== 1) {
         setError(true);
       } else {
-        eventRegistrationByBsc(params?.id, inputFields)
+        eventRegistrationByBsc(params?.id, inputFields,router)
       }
     } else if (eventName === "science_safari") {
-      eventRegistrationByBsc(params?.id, inputFields)
+      eventRegistrationByBsc(params?.id, inputFields,router)
     }
-    console.log(inputFields);
   }
+
   const renderClassOptions = () => {
     if (category === "1") {
       return (
@@ -146,7 +147,7 @@ export default function Registration() {
                       value={input.class}
                       onChange={event => handleFormChange(index, event)}
                     >
-                      <option value="" disabled>Select Class</option>
+                      <option value="0">Select Class</option>
                       {renderClassOptions()}
                     </select>
                   }

@@ -5,28 +5,34 @@ import styles from '@styles/scss/eventDetails.module.scss'
 import { useParams, useRouter } from 'next/navigation'
 import { getAllEvents, getEventDetails, getEventDetailsByToken } from '@/services/events/Event'
 import Image from 'next/image'
+import { toast } from 'react-toastify'
 
 export default function EventDetails() {
+    const [event, setEvent] = useState({});
+    const [token, setToken] = useState(null);
+
     const params = useParams()
     const router = useRouter();
-    //consolepathname?.slug)
-    const [event, setEvent] = useState({});
-        // console.log(token)
+
     useEffect(() => {
-        const token = localStorage.getItem('accessToken');
-        if (token) {
-            console.log(localStorage.getItem('accessToken'))
-            console.log("called")
+        const accessToken = localStorage.getItem('accessToken');
+        setToken(accessToken)
+        if (accessToken) {
             getEventDetailsByToken(params?.id, setEvent);
         } else {
             getEventDetails(params?.id, setEvent);
         }
     }, [])
 
-    const handleClick = (e)=>{
-        e.preventDefault();
-        if(params?.slug === "bsc"){
-            router?.push(`/events/${params?.slug}/${event?._id}/${event?.title}`)
+    const handleClick = (e) => {
+        if (token) {
+            e.preventDefault();
+            if (params?.slug === "bsc") {
+                router?.push(`/events/${params?.slug}/${event?._id}/${event?.title}`)
+            }
+        } else {
+            toast.info("Please login to continue");
+            router.push('/login')
         }
     }
 
@@ -38,7 +44,7 @@ export default function EventDetails() {
                         <div className={styles.boxrow}>
                             <div className={styles.left}>
                                 <Image src={event?.posterImg} height={1000} width={1000} className={styles.poster} />
-                                <button onClick={(e)=>{
+                                <button onClick={(e) => {
                                     handleClick(e)
                                 }} className={styles.register}>{event?.isRegistered ? "Already Registered" : "Registrations starts soon !!!"}</button>
                             </div>
