@@ -61,5 +61,6 @@ export const api = {
 export const protectedRoute = {
     getAllEventDetailsWithToken :"/getEventDetailsByIdForLoggedInUsers/",
     registerWithTeam:"/registerWithTeam",
-    registerEvent:"/eventRegister"
+    registerEvent:"/eventRegister",
+    getProfileroute: "/getUserDetails"
 }

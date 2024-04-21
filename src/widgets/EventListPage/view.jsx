@@ -6,15 +6,17 @@ import { useRouter } from 'next/navigation';
 import { useParams, usePathname } from 'next/navigation';
 import { getDepartmentEvents } from '@/services/events/Event';
 import EventList from '@/common/components/EventList';
+import Loading from '@/common/components/Loading';
 
 export default function EventListPage() {
   const params = useParams();
   const router = useRouter();
   const [eventList, setEventList] = useState([]);
   const [title, setTitle] = useState("");
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    getDepartmentEvents(params?.slug, setEventList);
+    getDepartmentEvents(params?.slug, setEventList,setLoading);
     if (params?.slug.toLocaleLowerCase() === "cse") {
       setTitle("Computer Science & Engineering")
     } else if (params?.slug.toLocaleLowerCase() === "eee") {
@@ -31,13 +33,19 @@ export default function EventListPage() {
   }, [])
 
   return (
-    <div className={styles.container}>
-      <div className={styles.wrapper}>
-        <div className={styles.row}>
-          <span className={styles.title}>{title}</span>
+    <>
+      {loading || eventList?.length === 0 ?
+        <Loading />
+        :
+        <div className={styles.container}>
+          <div className={styles.wrapper}>
+            <div className={styles.row}>
+              <span className={styles.title}>{title}</span>
+            </div>
+            <EventList eventList={eventList} />
+          </div>
         </div>
-        <EventList eventList={eventList} />
-      </div>
-    </div>
+      }
+    </>
   )
 }

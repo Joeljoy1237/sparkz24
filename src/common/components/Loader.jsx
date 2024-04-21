@@ -7,7 +7,7 @@ export default function Loader() {
     return (
         <div className={styles.container}>
             {/* <Image alt='loader' src={"/images/loading.svg"} className={styles.loading} height={1000} width={1000} /> */}
-            <Loading/>
+            {/* <Loading/> */}
         </div>
     )
 }

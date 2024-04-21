@@ -6,13 +6,17 @@ import { toast } from "react-toastify";
 
 export const getDepartmentEvents = async (
     depId,
-    setEventList
+    setEventList,
+    setLoading
 ) => {
+    setLoading(true)
     try {
         const response = await publicGateway.get(api.getDepEvents + depId);
         //consoleresponse)
         setEventList(response?.data?.data);
+        setLoading(false)
     } catch (error) {
+        setLoading(false)
         //consoleerror)
     }
 
