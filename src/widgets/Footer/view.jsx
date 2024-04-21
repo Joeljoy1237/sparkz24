@@ -17,10 +17,10 @@ export default function Footer() {
                     <div className={styles.left}>
                         <div className={styles.detailRow}>
                             <div className={styles.detailLeft}>
-                                <span className={styles.contactTitle}>Abhishek</span>
+                                <span className={styles.contactTitle}>Jubin</span>
                             </div>
                             <div className={styles.detailLeft}>
-                                <span className={styles.contactTitle}>7907247909</span>
+                                <span className={styles.contactTitle}>+91 90613 13287</span>
                             </div>
                         </div>
                     </div>

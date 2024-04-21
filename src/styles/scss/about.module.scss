@@ -1,12 +1,17 @@
 @import 'variables';
 
+.wrap{
+    background: linear-gradient(to bottom, #0d0e0f, transparent), linear-gradient(to top, #131517e8, transparent), ;
+
+}
+
 .container {
     padding: 15vh 5vw;
-    // min-height: 100vh;
+    min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(to bottom, #131517, transparent), linear-gradient(to top, #131517c4, transparent), ;
+    // background: linear-gradient(to bottom, #131517, transparent), linear-gradient(to top, #131517c4, transparent), ;
 }
 
 @media only screen and (max-width: 880px) {
@@ -16,7 +21,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        background: linear-gradient(to bottom, #131517, transparent), linear-gradient(to top, #131517c4, transparent), ;
+        // background: linear-gradient(to bottom, #131517, transparent), linear-gradient(to top, #131517c4, transparent), ;
     }
 }
 

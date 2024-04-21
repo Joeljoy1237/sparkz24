@@ -213,6 +213,7 @@
 
 .rightRight {
     flex: 8;
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -222,7 +223,7 @@
 
 @media only screen and (max-width: 880px) {
     .rightRight {
-        flex: 8;
+        flex: 12;
         display: flex;
         flex-direction: column;
         align-items: center;

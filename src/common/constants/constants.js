@@ -40,12 +40,12 @@ export const depLogo = [
     {
         title:"Civil Engineering",
         img:"/events/cs.svg",
-        url:"/events/bsc"
+        url:"/events/civil"
     },
     {
         title:"Basic Science & Humanities",
         img:"/events/cs.svg",
-        url:"/events/ce"
+        url:"/events/bsc"
     },
 ]
 
@@ -56,4 +56,11 @@ export const api = {
     getFeaturedEvents:"/getFeaturedEvents",
     getDepEvents:"/getEventList/",
     getEventDetailsById:"/getEventDetailsById"
+}
+
+export const protectedRoute = {
+    getAllEventDetailsWithToken :"/getEventDetailsByIdForLoggedInUsers/",
+    registerWithTeam:"/registerWithTeam",
+    registerEvent:"/eventRegister",
+    getProfileroute: "/getUserDetails"
 }

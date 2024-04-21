@@ -6,13 +6,13 @@ import { useRouter } from 'next/navigation'
 import { toast } from 'react-toastify';
 import Image from 'next/image'
 import Register from '@/common/icons/Register';
-import Ticket from '@/common/components/Ticket';
-import TicketIcon from '@/common/icons/Ticket';
+import { getProfile } from '@/services/profile';
 
 export default function Profile() {
   const [user, setUser] = useState(null);
   const router = useRouter();
   useEffect(() => {
+    getProfile();
     setUser(JSON.parse(localStorage.getItem('user')))
     if (!localStorage.getItem('accessToken')) {
       router.replace('/login');
@@ -31,7 +31,12 @@ export default function Profile() {
                 <span className={styles.welcome}>Welcome, 👋 {user?.firstName} {user?.lastName}</span>
               </div>
               <div className={styles.hr}></div>
-              <div className={styles.boxRow}>
+              <div className={styles.boxRow} onClick={() => {
+                toast.info("Will be available soon!!!", {
+                  theme: "dark",
+                  position:"bottom-center"
+                })
+              }}>
                 <span className={styles.welcome}>Registered Events</span>
                 <Register className={styles.icon} />
               </div>
@@ -51,7 +56,7 @@ export default function Profile() {
                   })
                   setTimeout(() => {
                     window.location.replace('/')
-                }, 1000);
+                  }, 1000);
                 }}>
                   Logout
                 </button>

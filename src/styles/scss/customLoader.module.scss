@@ -1,6 +1,6 @@
 @import 'variables';
 
-.container{
+.container {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -10,6 +10,11 @@
 
 }
 
-.loading{
+.loading {
     height: 25rem;
+}
+
+.loader {
+    color: $primary;
+    align-self: center;
 }

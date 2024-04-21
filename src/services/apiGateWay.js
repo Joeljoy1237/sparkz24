@@ -75,7 +75,23 @@ privateGateway.interceptors.response.use(
             return Promise.resolve({
                 status: 200,
             });
-        } else {
+        } else if (error.response?.data?.resCode === 403) {
+            // Handle specific error code
+            toast.error(error.response?.data?.message + error?.response?.data?.description, {
+                position: "bottom-center",
+                theme: "dark"
+            });
+
+            // Wait for 3 seconds
+            setTimeout(() => {
+                localStorage.clear();
+                window.location.href = "/login";
+            }, 3000);
+
+            return Promise.resolve({
+                status: 200,
+            });
+        }else {
             return Promise.reject(error);
         }
     }
