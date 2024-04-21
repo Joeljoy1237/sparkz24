@@ -1,15 +1,19 @@
 @import 'variables';
 
-.container{
+.container {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 100vh;
+    height: 90vh;
     width: 100vw;
     background: linear-gradient(to bottom, #131517f6, transparent), linear-gradient(to top, #131517ec, transparent), ;
 
 }
 
-.loading{
+.loading {
     height: 25rem;
+}
+
+.loader {
+    color: $primary
 }

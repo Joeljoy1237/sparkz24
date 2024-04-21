@@ -126,7 +126,7 @@ export default function Registration() {
                     className={styles.txtField}
                     name='studentName'
                     placeholder='Name'
-                    value={input.name}
+                    value={input.studentName}
                     onChange={event => handleFormChange(index, event)}
                   />
                   {/* <input
