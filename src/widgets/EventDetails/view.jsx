@@ -12,7 +12,7 @@ export default function EventDetails() {
     const [event, setEvent] = useState({});
     const [token, setToken] = useState(null);
     const [isRegistered, setIsRegistered] = useState(false);
-    const [loading, setIsLoading] = useState(false);
+    const [loading, setLoading] = useState(false);
 
     const params = useParams()
     const router = useRouter();
@@ -21,9 +21,9 @@ export default function EventDetails() {
         const accessToken = localStorage.getItem('accessToken');
         setToken(accessToken)
         if (accessToken) {
-            getEventDetailsByToken(params?.id, setEvent, setIsRegistered, setIsLoading);
+            getEventDetailsByToken(params?.id, setEvent, setIsRegistered, setLoading);
         } else {
-            getEventDetails(params?.id, setEventsetIsLoading,);
+            getEventDetails(params?.id, setEvent,setLoading);
         }
     }, [])
 

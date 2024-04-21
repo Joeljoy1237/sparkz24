@@ -102,3 +102,16 @@
     font-size: 1.2rem;
     font-weight: 500;
 }
+
+@media only screen and (max-width: 600px) {
+    .txtField {
+      /* Adjust font size or color to make placeholder more visible */
+      font-size: 14px;
+      color: #969696; /* Adjust color as needed */
+    }
+  }
+
+  input[type="date"]:not(.has-value):before{
+    color: #969696;
+    content: attr(placeholder);
+  }

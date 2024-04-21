@@ -34,18 +34,18 @@ export const getAllEvents = async (
 export const getEventDetails = async (
     eventId,
     setEvents,
-    setIsLoading
+    setLoading
 ) => {
-    setIsLoading(true);
+    setLoading(true);
     try {
         const response = await publicGateway.post(api.getEventDetailsById, {
             eventId
         })
         setEvents(response?.data?.data)
         console.log(response)
-        setIsLoading(false);
+        setLoading(false);
     } catch (error) {
-        setIsLoading(false);
+        setLoading(false);
         //consoleerror)
     }
 }
@@ -54,9 +54,9 @@ export const getEventDetailsByToken = async (
     eventId,
     setEvents,
     setIsRegistered,
-    setIsLoading
+    setLoading
 ) => {
-    setIsLoading(true)
+    setLoading(true)
     try {
         const response = await privateGateway.post(protectedRoute.getAllEventDetailsWithToken, {
             eventId
@@ -64,9 +64,9 @@ export const getEventDetailsByToken = async (
         setEvents(response?.data?.data);
         setIsRegistered(response?.data?.data?.isRegistered)
         console.log(response)
-        setIsLoading(false)
+        setLoading(false)
     } catch (error) {
-        setIsLoading(false)
+        setLoading(false)
         //consoleerror)
     }
 }
