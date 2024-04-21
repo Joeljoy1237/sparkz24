@@ -10,9 +10,11 @@
 }
 
 .wrap{
+    display: flex;
+    flex-direction: column;
     width: 100%;
     padding: 2rem 0;
-    gap: 4vh;
+    gap: 3vh;
 }
 
 
