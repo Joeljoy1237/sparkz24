@@ -60,8 +60,10 @@ export default function Navbar() {
       <div className={drawerOpen ? styles.open : (isNavbarFixed ? styles.styledcontainer : styles.container)}>
         <div className={styles.wrapper}>
           <div className={styles.left}>
-            <Image src="/images/sparkzLogo.svg" alt='logo' width="1" height={10} className={styles.logo} />
-            <span className={styles.logoTxt}>SPARKZ'<span className={styles.highlight}>24</span></span>
+            <Link href="/" className={styles.left}>
+              <Image src="/images/sparkzLogo.svg" alt='logo' width="1" height={10} className={styles.logo} />
+              <span className={styles.logoTxt}>SPARKZ'<span className={styles.highlight}>24</span></span>
+            </Link>
           </div>
           <div className={styles.center}>
             {navLinks?.map((item, index) => (
@@ -119,7 +121,7 @@ export default function Navbar() {
               <button className={styles.loginRes} onClick={() => {
                 router.push('/profile');
                 setDrawerOpen(false);
-              }}><MdAccountCircle/> Profile</button>
+              }}><MdAccountCircle /> Profile</button>
               :
               <button className={styles.loginRes} onClick={() => {
                 router.push('/login');
