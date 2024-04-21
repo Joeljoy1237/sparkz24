@@ -48,13 +48,15 @@ export const getEventDetails = async (
 
 export const getEventDetailsByToken = async (
     eventId,
-    setEvents
+    setEvents,
+    setIsRegistered
 ) => {
     try {
         const response = await privateGateway.post(protectedRoute.getAllEventDetailsWithToken, {
             eventId
         })
-        setEvents(response?.data?.data)
+        setEvents(response?.data?.data);
+        setIsRegistered(response?.data?.data?.isRegistered)
         console.log(response)
     } catch (error) {
         //consoleerror)
@@ -75,6 +77,29 @@ export const eventRegistrationByBsc = async (
             theme: "dark"
         })
         router.push('/events/bsc')
+    } catch (error) {
+        console.log(error)
+        toast.error(error?.response?.data?.message, {
+            theme: "dark"
+        })
+    }
+}
+
+export const eventRegistration = async (
+    eventId,
+    router,
+    path,
+    setIsRegistered
+) => {
+    try {
+        const response = await privateGateway.post(protectedRoute?.registerEvent, {
+            eventId,
+        });
+        toast.success(response?.data?.message, {
+            theme: "dark"
+        })
+        setIsRegistered(true)
+        // router.push('/events/'+path)
     } catch (error) {
         console.log(error)
         toast.error(error?.response?.data?.message, {

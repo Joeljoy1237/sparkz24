@@ -3,13 +3,14 @@
 import React, { useEffect, useState } from 'react'
 import styles from '@styles/scss/eventDetails.module.scss'
 import { useParams, useRouter } from 'next/navigation'
-import { getAllEvents, getEventDetails, getEventDetailsByToken } from '@/services/events/Event'
+import { eventRegistration, getAllEvents, getEventDetails, getEventDetailsByToken } from '@/services/events/Event'
 import Image from 'next/image'
 import { toast } from 'react-toastify'
 
 export default function EventDetails() {
     const [event, setEvent] = useState({});
     const [token, setToken] = useState(null);
+    const [isRegistered,setIsRegistered] = useState(false)
 
     const params = useParams()
     const router = useRouter();
@@ -18,7 +19,7 @@ export default function EventDetails() {
         const accessToken = localStorage.getItem('accessToken');
         setToken(accessToken)
         if (accessToken) {
-            getEventDetailsByToken(params?.id, setEvent);
+            getEventDetailsByToken(params?.id, setEvent,setIsRegistered);
         } else {
             getEventDetails(params?.id, setEvent);
         }
@@ -29,6 +30,8 @@ export default function EventDetails() {
             e.preventDefault();
             if (params?.slug === "bsc") {
                 router?.push(`/events/${params?.slug}/${event?._id}/${event?.title}`)
+            }else{
+                eventRegistration(params?.id,router,params?.slug,setIsRegistered)
             }
         } else {
             toast.info("Please login to continue");
@@ -46,7 +49,7 @@ export default function EventDetails() {
                                 <Image src={event?.posterImg} height={1000} width={1000} className={styles.poster} />
                                 <button onClick={(e) => {
                                     handleClick(e)
-                                }} className={styles.register}>{event?.isRegistered ? "Already Registered" : "Registrations starts soon !!!"}</button>
+                                }} className={styles.register}>{isRegistered ? "Registered" : "Register"}</button>
                             </div>
                             <div className={styles.hr}></div>
                             <div className={styles.right}>
