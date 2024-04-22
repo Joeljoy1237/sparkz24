@@ -10,9 +10,11 @@ import { getProfile } from '@/services/profile';
 
 export default function Profile() {
   const [user, setUser] = useState(null);
+  const [regEvents, setRegEvents] = useState([]);
+  const [loading, setLoading] = useState(false);
   const router = useRouter();
   useEffect(() => {
-    getProfile();
+    getProfile(setRegEvents, setLoading);
     setUser(JSON.parse(localStorage.getItem('user')))
     if (!localStorage.getItem('accessToken')) {
       router.replace('/login');
@@ -31,15 +33,14 @@ export default function Profile() {
                 <span className={styles.welcome}>Welcome, 👋 {user?.firstName} {user?.lastName}</span>
               </div>
               <div className={styles.hr}></div>
-              <div className={styles.boxRow} onClick={() => {
-                toast.info("Will be available soon!!!", {
-                  theme: "dark",
-                  position:"bottom-center"
-                })
-              }}>
-                <span className={styles.welcome}>Registered Events</span>
-                <Register className={styles.icon} />
-              </div>
+              {regEvents?.length !== 0 &&
+                <div className={styles.boxRow} onClick={() => {
+                  router.push('/profile/registeredEvents')
+                }}>
+                  <span className={styles.welcome}>Registered Events</span>
+                  <Register className={styles.icon} />
+                </div>
+              }
               <div className={styles.hrbtm}></div>
               {/* <div className={styles.boxRow} onClick={()=>{
                 router.push('/ticket')
