@@ -37,7 +37,7 @@ export default function Registration() {
   ]);
 
   const addFields = () => {
-    let newField = { name: '', dob: '', school: '', schoolAddress: '' };
+    let newField = { studentName: '', dob: '', school: '', schoolAddress: '' };
     setInputFields([...inputFields, newField]);
   };
 
@@ -65,6 +65,17 @@ export default function Registration() {
       }
     } else if (eventName === "science_safari") {
       eventRegistrationByBsc(params?.id, inputFields, router, setLoading)
+    } else {
+      const additionalMembersNeeded = (event?.teamCountMin || 0) - (inputFields?.length || 0);
+      if (additionalMembersNeeded <= 0) {
+        console.log(inputFields)
+        // eventRegistrationByBsc(params?.id, inputFields, router, setLoading);
+      } else {
+        toast.error("Add " + additionalMembersNeeded + " more members",
+          {
+            theme: "dark"
+          });
+      }
     }
   }
 
@@ -232,7 +243,7 @@ export default function Registration() {
                     value={input?.email}
                     onChange={event => handleFormChange(index, event)}
                   />
-                   <input
+                  <input
                     className={styles.txtField}
                     placeholder='Semester'
                     name='semester'
