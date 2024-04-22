@@ -32,7 +32,7 @@ export default function EventDetails() {
             if (event?.isTeam) {
                 router?.push(`/events/${params?.slug}/${event?._id}/${event?.title}`)
             } else {
-                eventRegistration(params?.id, router, params?.slug, setIsRegistered)
+                eventRegistration(params?.id, setIsRegistered)
             }
         } else {
             toast.info("Please login to continue", {

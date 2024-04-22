@@ -66,7 +66,7 @@ export const getEventDetailsByToken = async (
             eventId
         })
         setEvents(response?.data?.data);
-        setIsRegistered(response?.data?.data?.isRegistered)
+        setIsRegistered(response?.data?.registerStatus)
         console.log(response)
         setLoading(false)
     } catch (error) {
@@ -103,8 +103,6 @@ export const eventRegistrationByBsc = async (
 
 export const eventRegistration = async (
     eventId,
-    router,
-    path,
     setIsRegistered
 ) => {
     try {
@@ -114,7 +112,7 @@ export const eventRegistration = async (
         toast.success(response?.data?.message, {
             theme: "dark"
         })
-        setIsRegistered(response?.data?.registerStatus)
+        setIsRegistered(true)
         // router.push('/events/'+path)
     } catch (error) {
         console.log(error)
