@@ -104,7 +104,7 @@ export default function Registration() {
                     {eventName === "keam" ? "Student Details" : `Team Member ${index + 1}`}
                   </span>
                 </div>
-                {eventName !== "keam" && (index === 0 || !categoryRendered) && // Render only for the first member or if not rendered yet
+                {eventName === "science_safari" && (index === 0 || !categoryRendered) && // Render only for the first member or if not rendered yet
                   <>
                     <select
                       className={styles.txtField}
@@ -147,7 +147,7 @@ export default function Registration() {
                     onChange={event => handleFormChange(index, event)}
                   />
                   {
-                    eventName !== "keam" &&
+                    eventName === "science_safari" &&
                     <select
                       className={styles.txtField}
                       name="class"
@@ -167,12 +167,26 @@ export default function Registration() {
                       onChange={event => handleFormChange(index, event)}
                     >
                       <option value="">Select Class</option>
+                      <option value="10">Class XII</option>
+                    </select>
+                  }
+                  {
+                    eventName === "battle_of_brains" &&
+                    <select
+                      className={styles.txtField}
+                      name="class"
+                      value={input.class}
+                      onChange={event => handleFormChange(index, event)}
+                    >
+                      <option value="">Select Class</option>
+                      <option value="8">Class VI</option>
+                      <option value="8">Class VII</option>
                       <option value="8">Class VIII</option>
                       <option value="9">Class IX</option>
                       <option value="10">Class X</option>
                       <option value="10">Class XI</option>
                       <option value="10">Class XII</option>
-                      <option value="Other">Other</option>
+                      {/* <option value="Other">Other</option> */}
                     </select>
                   }
                   <input
