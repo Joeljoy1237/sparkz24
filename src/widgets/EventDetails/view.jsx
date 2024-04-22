@@ -29,7 +29,7 @@ export default function EventDetails() {
     const handleClick = (e) => {
         if (token) {
             e.preventDefault();
-            if (event?.isTeam || !isRegistered) {
+            if (event?.isTeam) {
                 router?.push(`/events/${params?.slug}/${event?._id}/${event?.title}`)
             } else {
                 eventRegistration(params?.id, setIsRegistered)
