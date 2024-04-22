@@ -55,21 +55,21 @@ export default function Registration() {
         })
         setError(true);
       } else {
-        eventRegistrationByBsc(params?.id, inputFields, router, setLoading)
+        eventRegistrationByBsc(params?.id, inputFields, router, setLoading,event?.department)
       }
     } else if (eventName === "keam") {
       if (inputFields?.length !== 1) {
         setError(true);
       } else {
-        eventRegistrationByBsc(params?.id, inputFields, router, setLoading)
+        eventRegistrationByBsc(params?.id, inputFields, router, setLoading,event?.department)
       }
     } else if (eventName === "science_safari") {
-      eventRegistrationByBsc(params?.id, inputFields, router, setLoading)
+      eventRegistrationByBsc(params?.id, inputFields, router, setLoading,event?.department)
     } else {
       const additionalMembersNeeded = (event?.teamCountMin || 0) - (inputFields?.length || 0);
       if (additionalMembersNeeded <= 0) {
         console.log(inputFields)
-        // eventRegistrationByBsc(params?.id, inputFields, router, setLoading);
+        eventRegistrationByBsc(params?.id, inputFields, router, setLoading,event?.department);
       } else {
         toast.error("Add " + additionalMembersNeeded + " more members",
           {
