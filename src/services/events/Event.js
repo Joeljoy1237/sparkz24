@@ -92,7 +92,7 @@ export const eventRegistrationByBsc = async (
         toast.success("Registered successfully.", {
             theme: "dark"
         })
-        router.push('/events/bsc');
+        router.back();
         setLoading(false)
     } catch (error) {
         console.log(error)
