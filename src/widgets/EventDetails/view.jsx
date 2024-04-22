@@ -29,7 +29,7 @@ export default function EventDetails() {
     const handleClick = (e) => {
         if (token) {
             e.preventDefault();
-            if (event?.isTeam) {
+            if (event?.isTeam || !isRegistered) {
                 router?.push(`/events/${params?.slug}/${event?._id}/${event?.title}`)
             } else {
                 eventRegistration(params?.id, setIsRegistered)
@@ -54,7 +54,7 @@ export default function EventDetails() {
                                 <div className={styles.boxrow}>
                                     <div className={styles.left}>
                                         <Image src={event?.posterImg} height={1000} width={1000} className={styles.poster} />
-                                        <button disabled={loading} onClick={(e) => {
+                                        <button disabled={loading || isRegistered} onClick={(e) => {
                                             handleClick(e)
                                         }} className={styles.register}>{isRegistered ? "Registered" : <>{loading ? "Registering" : "Register"}</>}
                                         </button>
