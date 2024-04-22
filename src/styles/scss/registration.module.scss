@@ -114,9 +114,7 @@
 
 
 @media only screen and (max-width: 600px) {
-
     input[type="date"]:not(.has-value):before {
-        display: none;
         color: #969696;
         content: attr(placeholder);
     }
