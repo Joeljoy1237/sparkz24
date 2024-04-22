@@ -66,7 +66,7 @@ export const getEventDetailsByToken = async (
             eventId
         })
         setEvents(response?.data?.data);
-        setIsRegistered(response?.data?.data?.isRegistered)
+        setIsRegistered(response?.data?.registerStatus)
         console.log(response)
         setLoading(false)
     } catch (error) {
@@ -79,18 +79,20 @@ export const eventRegistrationByBsc = async (
     eventId,
     team,
     router,
-    setLoading
+    setLoading,
+    dep
 ) => {
     setLoading(true)
     try {
         const response = await privateGateway.post(protectedRoute?.registerWithTeam, {
             eventId,
-            team
+            team,
+            dep
         });
         toast.success("Registered successfully.", {
             theme: "dark"
         })
-        router.push('/events/bsc');
+        router.back();
         setLoading(false)
     } catch (error) {
         console.log(error)
@@ -103,8 +105,6 @@ export const eventRegistrationByBsc = async (
 
 export const eventRegistration = async (
     eventId,
-    router,
-    path,
     setIsRegistered
 ) => {
     try {

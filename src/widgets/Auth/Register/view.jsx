@@ -85,13 +85,13 @@ const [loading,setLoading]= useState(false)
 
             <div className={styles.row}>
               <div className={styles.InputBox}>
-                <span className={styles.label}>College</span>
+                <span className={styles.label}>College/School</span>
                 <input onChange={(e) => {
                   setCollege(e.target.value);
                 }} type="text" className={styles.txtBox} placeholder='Carmel college of engineering & technology' />
               </div>
               <div className={styles.InputBox}>
-                <span className={styles.label}>Department</span>
+                <span className={styles.label}>Department/Class</span>
                 <input onChange={(e) => {
                   setDepartment(e.target.value);
                 }} type="text" className={styles.txtBox} placeholder='Computer Science & Engineering' />
@@ -100,7 +100,7 @@ const [loading,setLoading]= useState(false)
 
             <div className={styles.row}>
               <div className={styles.InputBox}>
-                <span className={styles.label}>Semester</span>
+                <span className={styles.label}>Semester(only for college students)</span>
                 <input onChange={(e) => {
                   setSemester(e.target.value);
                 }} type="text" className={styles.txtBox} placeholder='S4' />

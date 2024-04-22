@@ -13,7 +13,6 @@ export default function EventDetails() {
     const [token, setToken] = useState(null);
     const [isRegistered, setIsRegistered] = useState(false);
     const [loading, setLoading] = useState(false);
-
     const params = useParams()
     const router = useRouter();
 
@@ -30,10 +29,10 @@ export default function EventDetails() {
     const handleClick = (e) => {
         if (token) {
             e.preventDefault();
-            if (params?.slug === "bsc" && !isRegistered) {
+            if (event?.isTeam) {
                 router?.push(`/events/${params?.slug}/${event?._id}/${event?.title}`)
             } else {
-                eventRegistration(params?.id, router, params?.slug, setIsRegistered)
+                eventRegistration(params?.id, setIsRegistered)
             }
         } else {
             toast.info("Please login to continue", {
@@ -55,7 +54,7 @@ export default function EventDetails() {
                                 <div className={styles.boxrow}>
                                     <div className={styles.left}>
                                         <Image src={event?.posterImg} height={1000} width={1000} className={styles.poster} />
-                                        <button disabled={loading} onClick={(e) => {
+                                        <button disabled={loading || isRegistered} onClick={(e) => {
                                             handleClick(e)
                                         }} className={styles.register}>{isRegistered ? "Registered" : <>{loading ? "Registering" : "Register"}</>}
                                         </button>
@@ -76,12 +75,12 @@ export default function EventDetails() {
                                                             {event?.priceCount >= 2 &&
                                                                 <div className={styles.prize}>
                                                                     <Image width={1000} height={1000} className={styles.prizeicon} src={"/images/second.png"} />
-                                                                    <span className={styles.prizeAmt}>{event?.secondPrize}</span>                                        </div>
+                                                                    <span className={styles.prizeAmt}>{event?.firstPrize}</span>                                        </div>
                                                             }
                                                             {event?.priceCount >= 3 &&
                                                                 <div className={styles.prize}>
                                                                     <Image width={1000} height={1000} className={styles.prizeicon} src={"/images/third.png"} />
-                                                                    <span className={styles.prizeAmt}>{event?.thirdPrize}</span>                                        </div>
+                                                                    <span className={styles.prizeAmt}>{event?.firstPrize}</span>                                        </div>
                                                             }
                                                         </div>
                                                     </div>
@@ -131,22 +130,22 @@ export default function EventDetails() {
                                             {/* <div className={styles.contactRow}>
                                     <span className={styles.contactTitle}>Contact</span>
                                 </div> */}
-                                            <div className={styles.contactRow}>
-                                                {event?.cordinator?.map((item) => (
-                                                    <div className={styles.contactBox}>
-                                                        <span className={styles.cordinatorDetail}>{item?.name}</span>
-                                                        <span className={styles.cordinatorDetail}>{item?.contact}</span>
-                                                    </div>
-                                                ))}
-                                            </div>
-
+                                        <div className={styles.contactRow}>
+                                            {event?.cordinator?.map((item) => (
+                                                <div key={item?.name} className={styles.contactBox}>
+                                                    <span className={styles.cordinatorDetail}>{item?.name}</span>
+                                                    <span className={styles.cordinatorDetail}>{item?.contact}</span>
+                                                </div>
+                                            ))}
                                         </div>
+
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                </div>
             }
-                </>
+        </>
     )
 }

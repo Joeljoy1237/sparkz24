@@ -2,27 +2,42 @@
 import React, { useEffect, useState } from 'react';
 import styles from '@styles/scss/registration.module.scss';
 import { useParams, useRouter } from 'next/navigation';
-import { eventRegistrationByBsc } from '@/services/events/Event';
+import { eventRegistrationByBsc, getEventDetailsByToken } from '@/services/events/Event';
 import { toast } from 'react-toastify';
 
 export default function Registration() {
   const [category, setCategory] = useState("");
   const [count, setCount] = useState(1);
+  const [event, setEvent] = useState({});
   const [limitCount, setLimitCount] = useState(1);
   const [eventName, setEventName] = useState("");
   const [error, setError] = useState(false);
   const [categoryRendered, setCategoryRendered] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [token, setToken] = useState(null);
+  const [isRegistered, setIsRegistered] = useState(false)
 
   const params = useParams();
   const router = useRouter();
 
+  //get data
+  useEffect(() => {
+    const accessToken = localStorage.getItem('accessToken');
+    setToken(accessToken)
+    if (accessToken) {
+      getEventDetailsByToken(params?.id, setEvent, setIsRegistered, setLoading);
+    } else {
+      router.push('/');
+      localStorage.clear();
+    }
+  }, [])
+  console.log("event:", event)
   const [inputFields, setInputFields] = useState([
-    { studentName: "", dob: "", category: "", school: "", schoolAddress: "" }
+    { studentName: "", dob: "", category: "", school: "", schoolAddress: "", email: "", mobNo: "", semester: "", college: "" }
   ]);
 
   const addFields = () => {
-    let newField = { name: '', dob: '', school: '', schoolAddress: '' };
+    let newField = { studentName: '', dob: '', school: '', schoolAddress: '' };
     setInputFields([...inputFields, newField]);
   };
 
@@ -40,16 +55,27 @@ export default function Registration() {
         })
         setError(true);
       } else {
-        eventRegistrationByBsc(params?.id, inputFields, router, setLoading)
+        eventRegistrationByBsc(params?.id, inputFields, router, setLoading,event?.department)
       }
     } else if (eventName === "keam") {
       if (inputFields?.length !== 1) {
         setError(true);
       } else {
-        eventRegistrationByBsc(params?.id, inputFields, router, setLoading)
+        eventRegistrationByBsc(params?.id, inputFields, router, setLoading,event?.department)
       }
     } else if (eventName === "science_safari") {
-      eventRegistrationByBsc(params?.id, inputFields, router, setLoading)
+      eventRegistrationByBsc(params?.id, inputFields, router, setLoading,event?.department)
+    } else {
+      const additionalMembersNeeded = (event?.teamCountMin || 0) - (inputFields?.length || 0);
+      if (additionalMembersNeeded <= 0) {
+        console.log(inputFields)
+        eventRegistrationByBsc(params?.id, inputFields, router, setLoading,event?.department);
+      } else {
+        toast.error("Add " + additionalMembersNeeded + " more members",
+          {
+            theme: "dark"
+          });
+      }
     }
   }
 
@@ -104,7 +130,7 @@ export default function Registration() {
                     {eventName === "keam" ? "Student Details" : `Team Member ${index + 1}`}
                   </span>
                 </div>
-                {eventName !== "keam" && (index === 0 || !categoryRendered) && // Render only for the first member or if not rendered yet
+                {eventName === "science_safari" && (index === 0 || !categoryRendered) && // Render only for the first member or if not rendered yet
                   <>
                     <select
                       className={styles.txtField}
@@ -137,17 +163,19 @@ export default function Registration() {
                     value={input.age}
                     onChange={event => handleFormChange(index, event)}
                   /> */}
-                  <input
-                    className={styles.txtField}
-                    id='date'
-                    placeholder='DD/MM/YYYY'
-                    name='dob'
-                    type='date'
-                    value={input?.dob}
-                    onChange={event => handleFormChange(index, event)}
-                  />
+                  {params?.slug === "bsc" &&
+                    <input
+                      className={styles.txtField}
+                      id='date'
+                      placeholder='DD/MM/YYYY'
+                      name='dob'
+                      type='date'
+                      value={input?.dob}
+                      onChange={event => handleFormChange(index, event)}
+                    />
+                  }
                   {
-                    eventName !== "keam" &&
+                    eventName === "science_safari" &&
                     <select
                       className={styles.txtField}
                       name="class"
@@ -167,33 +195,83 @@ export default function Registration() {
                       onChange={event => handleFormChange(index, event)}
                     >
                       <option value="">Select Class</option>
+                      <option value="10">Class XII</option>
+                    </select>
+                  }
+                  {
+                    eventName === "battle_of_brains" &&
+                    <select
+                      className={styles.txtField}
+                      name="class"
+                      value={input.class}
+                      onChange={event => handleFormChange(index, event)}
+                    >
+                      <option value="">Select Class</option>
+                      <option value="8">Class VI</option>
+                      <option value="8">Class VII</option>
                       <option value="8">Class VIII</option>
                       <option value="9">Class IX</option>
                       <option value="10">Class X</option>
                       <option value="10">Class XI</option>
                       <option value="10">Class XII</option>
-                      <option value="Other">Other</option>
+                      {/* <option value="Other">Other</option> */}
                     </select>
+                  }
+                  {params?.slug === "bsc" &&
+                    <input
+                      className={styles.txtField}
+                      name='school'
+                      placeholder='School'
+                      value={input.school}
+                      onChange={event => handleFormChange(index, event)}
+                    />
+                  }
+                  {params?.slug === "bsc" &&
+                    <input
+                      className={styles.txtField}
+                      name='schoolAddress'
+                      placeholder='School Address'
+                      value={input.schoolAddress}
+                      onChange={event => handleFormChange(index, event)}
+                    />
                   }
                   <input
                     className={styles.txtField}
-                    name='school'
-                    placeholder='School'
-                    value={input.school}
+                    placeholder='Email'
+                    name='email'
+                    type='email'
+                    value={input?.email}
                     onChange={event => handleFormChange(index, event)}
                   />
                   <input
                     className={styles.txtField}
-                    name='schoolAddress'
-                    placeholder='School Address'
-                    value={input.schoolAddress}
+                    placeholder='Semester'
+                    name='semester'
+                    type='text'
+                    value={input?.semester}
+                    onChange={event => handleFormChange(index, event)}
+                  />
+                  <input
+                    className={styles.txtField}
+                    placeholder='College'
+                    name='college'
+                    type='text'
+                    value={input?.college}
+                    onChange={event => handleFormChange(index, event)}
+                  />
+                  <input
+                    className={styles.txtField}
+                    placeholder='Mobile number'
+                    name='mobNo'
+                    type='number'
+                    value={input?.mobNo}
                     onChange={event => handleFormChange(index, event)}
                   />
                 </div>
               </div>
             ))}
             <div className={styles.actionRow}>
-              {count < limitCount && (
+              {count < event?.teamCountMax && (
                 <button className={styles.action} type='button' onClick={() => {
                   addFields();
                   setCount(count + 1);
