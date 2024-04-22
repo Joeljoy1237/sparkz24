@@ -114,7 +114,7 @@ export const eventRegistration = async (
         toast.success(response?.data?.message, {
             theme: "dark"
         })
-        setIsRegistered(true)
+        setIsRegistered(response?.data?.registerStatus)
         // router.push('/events/'+path)
     } catch (error) {
         console.log(error)
