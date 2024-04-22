@@ -13,7 +13,7 @@ export default function EventDetails() {
     const [token, setToken] = useState(null);
     const [isRegistered, setIsRegistered] = useState(false);
     const [loading, setLoading] = useState(false);
-
+console.log(event)
     const params = useParams()
     const router = useRouter();
 
@@ -76,12 +76,12 @@ export default function EventDetails() {
                                                             {event?.priceCount >= 2 &&
                                                                 <div className={styles.prize}>
                                                                     <Image width={1000} height={1000} className={styles.prizeicon} src={"/images/second.png"} />
-                                                                    <span className={styles.prizeAmt}>{event?.firstPrize}</span>                                        </div>
+                                                                    <span className={styles.prizeAmt}>{event?.secondPrize}</span>                                        </div>
                                                             }
                                                             {event?.priceCount >= 3 &&
                                                                 <div className={styles.prize}>
-                                                                    <Image width={1000} height={1000} className={styles.prizeicon} src={"/images/third.png"} />
-                                                                    <span className={styles.prizeAmt}>{event?.firstPrize}</span>                                        </div>
+                                                                    <Image width={1000} height={1000} className={styles.prizeicon3} src={"/images/third.png"} />
+                                                                    <span className={styles.prizeAmt}>{event?.thirdPrize}</span>                                        </div>
                                                             }
                                                         </div>
                                                     </div>
@@ -116,7 +116,7 @@ export default function EventDetails() {
                                                             <span className={styles.data}>Rules and Regulations:</span>
                                                             <div className={styles.ruleBox}>
                                                                 {event?.rules?.map((rule) => (
-                                                                    <span className={styles.data}>🚀{" "}{rule}</span>
+                                                                    <span  key={rule} className={styles.data}>🚀{" "}{rule}</span>
                                                                 ))}
                                                             </div>
                                                         </div>
@@ -133,7 +133,7 @@ export default function EventDetails() {
                                 </div> */}
                                             <div className={styles.contactRow}>
                                                 {event?.cordinator?.map((item) => (
-                                                    <div className={styles.contactBox}>
+                                                    <div key={item?.name} className={styles.contactBox}>
                                                         <span className={styles.cordinatorDetail}>{item?.name}</span>
                                                         <span className={styles.cordinatorDetail}>{item?.contact}</span>
                                                     </div>
