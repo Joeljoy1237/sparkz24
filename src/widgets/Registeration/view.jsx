@@ -55,21 +55,21 @@ export default function Registration() {
         })
         setError(true);
       } else {
-        eventRegistrationByBsc(params?.id, inputFields, router, setLoading,event?.department)
+        eventRegistrationByBsc(params?.id, inputFields, router, setLoading, event?.department)
       }
     } else if (eventName === "keam") {
       if (inputFields?.length !== 1) {
         setError(true);
       } else {
-        eventRegistrationByBsc(params?.id, inputFields, router, setLoading,event?.department)
+        eventRegistrationByBsc(params?.id, inputFields, router, setLoading, event?.department)
       }
     } else if (eventName === "science_safari") {
-      eventRegistrationByBsc(params?.id, inputFields, router, setLoading,event?.department)
+      eventRegistrationByBsc(params?.id, inputFields, router, setLoading, event?.department)
     } else {
       const additionalMembersNeeded = (event?.teamCountMin || 0) - (inputFields?.length || 0);
       if (additionalMembersNeeded <= 0) {
         console.log(inputFields)
-        eventRegistrationByBsc(params?.id, inputFields, router, setLoading,event?.department);
+        eventRegistrationByBsc(params?.id, inputFields, router, setLoading, event?.department);
       } else {
         toast.error("Add " + additionalMembersNeeded + " more members",
           {
@@ -235,38 +235,42 @@ export default function Registration() {
                       onChange={event => handleFormChange(index, event)}
                     />
                   }
-                  <input
-                    className={styles.txtField}
-                    placeholder='Email'
-                    name='email'
-                    type='email'
-                    value={input?.email}
-                    onChange={event => handleFormChange(index, event)}
-                  />
-                  <input
-                    className={styles.txtField}
-                    placeholder='Semester'
-                    name='semester'
-                    type='text'
-                    value={input?.semester}
-                    onChange={event => handleFormChange(index, event)}
-                  />
-                  <input
-                    className={styles.txtField}
-                    placeholder='College'
-                    name='college'
-                    type='text'
-                    value={input?.college}
-                    onChange={event => handleFormChange(index, event)}
-                  />
-                  <input
-                    className={styles.txtField}
-                    placeholder='Mobile number'
-                    name='mobNo'
-                    type='number'
-                    value={input?.mobNo}
-                    onChange={event => handleFormChange(index, event)}
-                  />
+                  {event?.department !== "BSC" &&
+                    <>
+                      <input
+                        className={styles.txtField}
+                        placeholder='Email'
+                        name='email'
+                        type='email'
+                        value={input?.email}
+                        onChange={event => handleFormChange(index, event)}
+                      />
+                      <input
+                        className={styles.txtField}
+                        placeholder='Semester'
+                        name='semester'
+                        type='text'
+                        value={input?.semester}
+                        onChange={event => handleFormChange(index, event)}
+                      />
+                      <input
+                        className={styles.txtField}
+                        placeholder='College'
+                        name='college'
+                        type='text'
+                        value={input?.college}
+                        onChange={event => handleFormChange(index, event)}
+                      />
+                      <input
+                        className={styles.txtField}
+                        placeholder='Mobile number'
+                        name='mobNo'
+                        type='number'
+                        value={input?.mobNo}
+                        onChange={event => handleFormChange(index, event)}
+                      />
+                    </>
+                  }
                 </div>
               </div>
             ))}
