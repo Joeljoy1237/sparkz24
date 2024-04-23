@@ -94,6 +94,8 @@ export default function Registration() {
           <option value="8">Class VIII</option>
           <option value="9">Class IX</option>
           <option value="10">Class X</option>
+          <option value="11">Class XI</option>
+          <option value="12">Class XII</option>
         </>
       );
     }
@@ -106,13 +108,13 @@ export default function Registration() {
   };
 
   useEffect(() => {
-    if (params?.id === "6622a712fb936731489d7804") {
+    if (params?.id === "662655157ad4722d57f16ae2") {
       setEventName("keam");
       setLimitCount(1)
-    } else if (params?.id === "66229fc7f72415dc4ce07ad5") {
+    } else if (params?.id === "66263c4369855cbf3e7fe1a3") {
       setEventName("science_safari")
       setLimitCount(5)
-    } else if (params?.id === "6622a7e3fb936731489d7807") {
+    } else if (params?.id === "662654b07ad4722d57f16adf") {
       setEventName("battle_of_brains")
       setLimitCount(2)
     }
@@ -212,8 +214,8 @@ export default function Registration() {
                       <option value="8">Class VIII</option>
                       <option value="9">Class IX</option>
                       <option value="10">Class X</option>
-                      <option value="10">Class XI</option>
-                      <option value="10">Class XII</option>
+                      <option value="11">Class XI</option>
+                      <option value="12">Class XII</option>
                       {/* <option value="Other">Other</option> */}
                     </select>
                   }
