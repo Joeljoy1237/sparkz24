@@ -129,7 +129,14 @@
 }
 
 .prizeicon3{
-    width: 2.3vw;margin-right: 10px;
+    width: 2.3vw;
+    margin-right: 10px;
+}
+
+@media only screen and (max-width: 880px) {
+    .prizeicon3{
+        width: 7.3vw;
+    }
 }
 
 .prizeicon {

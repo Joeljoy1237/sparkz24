@@ -79,7 +79,7 @@ export default function EventDetails() {
                                                             }
                                                             {event?.priceCount >= 3 &&
                                                                 <div className={styles.prize}>
-                                                                    <Image width={1000} height={1000} className={styles.prizeicon} src={"/images/third.png"} />
+                                                                    <Image width={1000} height={1000} className={styles.prizeicon3} src={"/images/third.png"} />
                                                                     <span className={styles.prizeAmt}>{event?.thirdPrize}</span>                                        </div>
                                                             }
                                                         </div>
